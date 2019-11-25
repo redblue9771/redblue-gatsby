@@ -1,11 +1,13 @@
-+++
-date = 2019-09-03T06:03:36+08:00
-description = ""
-title = "从仓库取消使用「Git LFS」跟踪大型媒体文件"
-author = "赤琦"
-original = ""
-tags = ["Git","Git LFS"]
-+++
+---
+author: 赤琦
+date: "2019-09-03T06:03:36+08:00"
+description: ""
+original: ""
+tags:
+- Git
+- Git LFS
+title: 从仓库取消使用「Git LFS」跟踪大型媒体文件
+---
 
 ### Git Large File Storage
 

@@ -6,12 +6,21 @@ import Navigation from "./Navigation"
 import Header from "./Header"
 import Footer from "./Footer"
 
-export default ({ children, location, title }) => {
+import { Helmet } from "react-helmet"
+
+export default ({ children, location, title, fluid = false, sectionProps }) => {
+  console.log(fluid)
   return (
     <React.Fragment>
       <Navigation />
-      <Header location={location} title={title} />
-      <div className="container-fluid clearfix main-area">{children}</div>
+      <Header location={location} {...sectionProps} />
+      <div
+        className={`container-fluid clearfix ${
+          fluid ? "main-area-fluid" : "main-area"
+        }`}
+      >
+        {children}
+      </div>
       <Footer />
     </React.Fragment>
   )

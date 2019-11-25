@@ -1,13 +1,15 @@
-+++
-title = "驯服「野兽」"
-date = "2016-01-14"
-description = ""
-author = "赤琦"
-original = ""
-series = ["低等动物"]
-tags = ["杂感"]
-draft = true
-+++
+---
+author: 赤琦
+date: "2016-01-14"
+description: ""
+draft: true
+original: ""
+category:
+  - 低等动物
+tags:
+  - 杂感
+title: 驯服「野兽」
+---
 
 > ——抑郁得快要恋上红唇，烈酒，香烟
 

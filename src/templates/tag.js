@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import PostsList from "../components/PostsList"
 import MainLayout from "../components/MainLayout"
 
-const CategoryTemplate = ({ location, pageContext, data }) => {
+export default ({ location, pageContext, data }) => {
   const { tag } = pageContext
 
   if (!tag) {
@@ -51,5 +51,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export default CategoryTemplate

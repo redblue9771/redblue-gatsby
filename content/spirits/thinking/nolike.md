@@ -1,13 +1,16 @@
-+++
-date = "2018-11-04T23:28:56+08:00"
-slug = "low-desire"
-title = "低「欲」少年"
-author = "赤琦"
-original = ""
-series = ["低等动物"]
-tags = ["低欲","杂感"]
-draft = true
-+++
+---
+author: 赤琦
+date: "2018-11-04T23:28:56+08:00"
+draft: true
+original: ""
+category:
+  - 低等动物
+slug: low-desire
+tags:
+  - 低欲
+  - 杂感
+title: 低「欲」少年
+---
 
 > 你，是否像我一样，很久没有喜欢一个东西、一件事亦或一个人。
 

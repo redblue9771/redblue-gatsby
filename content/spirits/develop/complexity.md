@@ -1,10 +1,11 @@
-+++
-title = "「复杂度」The Algorithm Complexity"
-date = "2018-05-23"
-author = "赤琦"
-original = ""
-tags = ["算法"]
-+++
+---
+author: 赤琦
+date: "2018-05-23"
+original: ""
+tags:
+- 算法
+title: 「复杂度」The Algorithm Complexity
+---
 
 ## 计算机科学中的复杂度
 

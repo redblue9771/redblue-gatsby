@@ -1,11 +1,15 @@
-+++
-title = "「快文化」崇拜的尽头是孤独海"
-date = "2018-05-11"
-author = "Brian（微信公众号：Brian在深圳 | brianinshenzhen）"
-original = "https://www.douban.com/note/557947118/"
-tags = ["新知", "快文化", "终身学习"]
-series = ["新青年"]
-+++
+---
+author: Brian（微信公众号：Brian在深圳 | brianinshenzhen）
+date: "2018-05-11"
+original: https://www.douban.com/note/557947118/
+category:
+  - 新青年
+tags:
+  - 新知
+  - 快文化
+  - 终身学习
+title: 「快文化」崇拜的尽头是孤独海
+---
 
 ## 快餐
 

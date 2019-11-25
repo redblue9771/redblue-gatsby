@@ -1,11 +1,11 @@
-+++
-title = "如何选择「Open License」？"
-date = "2018-11-26 00:00:00 +0000"
-description = "一份开源协议指北"
-author = "赤琦"
-original = ''
-draft = true
-+++
+---
+author: 赤琦
+date: 2018-11-26 00:00:00 +0000
+description: 一份开源协议指北
+draft: true
+original: ""
+title: 如何选择「Open License」？
+---
 
 ## 何谓「开源」
 

@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import PostsList from "../components/PostsList"
 import MainLayout from "../components/MainLayout"
 
-const CategoryTemplate = ({ location, pageContext, data }) => {
+export default ({ location, pageContext, data }) => {
   const { category } = pageContext
   return (
     <MainLayout location={location} title={`Posts in category "${category}"`}>
@@ -43,5 +43,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export default CategoryTemplate

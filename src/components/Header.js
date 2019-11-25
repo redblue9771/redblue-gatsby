@@ -1,6 +1,6 @@
 import React from "react"
 
-export default ({ location, title, children }) => {
+export default ({ location, title, date, children }) => {
   const renderTitle = () => {
     if (location.pathname === `${__PATH_PREFIX__}/`) {
       return (
@@ -18,7 +18,7 @@ export default ({ location, title, children }) => {
             {title}
           </h1>
           <span>日期：</span>
-          <time></time>
+          <time>{date}</time>
         </>
       )
     }

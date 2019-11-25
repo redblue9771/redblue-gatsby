@@ -1,11 +1,13 @@
-+++
-date = "2018-08-13T16:39:45+08:00"
-description = ""
-title = "极短「CSS3」代码去 CSDN 广告"
-author = "赤琦"
-original = ""
-tags = ["CSS","广告"]
-+++
+---
+author: 赤琦
+date: "2018-08-13T16:39:45+08:00"
+description: ""
+original: ""
+tags:
+- CSS
+- 广告
+title: 极短「CSS3」代码去 CSDN 广告
+---
 
 ## 关于 CSDN
 

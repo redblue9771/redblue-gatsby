@@ -1,7 +1,7 @@
 import React from "react"
 import MainLayout from "../../components/MainLayout"
 import "../../assets/css/timeline.min.css"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 export default ({ location, data }) => {
   console.log(data)
@@ -82,6 +82,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
+      filter: { fields: { draft: { eq: false } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 1000
     ) {

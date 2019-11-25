@@ -1,11 +1,13 @@
-+++
-title = "I'm「赤琦」"
-date = "1997-06-30"
-author = "赤琦"
-original = ""
-series = ["低等动物"]
-tags = ["赤琦"]
-+++
+---
+author: 赤琦
+date: "1997-06-30"
+original: ""
+category:
+  - 低等动物
+tags:
+  - 赤琦
+title: I'm「赤琦」
+---
 
 ## 你好，中国
 

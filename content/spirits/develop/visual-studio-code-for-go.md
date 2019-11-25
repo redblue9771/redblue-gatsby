@@ -1,10 +1,13 @@
-+++
-date = "2019-04-12T19:58:31+08:00"
-title = "Visual Studio Code 中的「Go配置」"
-author = "赤琦"
-original = ""
-tags = ["Golang","VS Code","开发环境"]
-+++
+---
+author: 赤琦
+date: "2019-04-12T19:58:31+08:00"
+original: ""
+tags:
+- Golang
+- VS Code
+- 开发环境
+title: Visual Studio Code 中的「Go配置」
+---
 
 ## Visual Studio Code 提示错误
 

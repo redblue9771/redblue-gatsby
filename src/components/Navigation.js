@@ -2,12 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import routes from "../utils/routes"
 
-const NavigationItem = ({ itemName, link }) => (
-  <Link className="nav-item nav-link text-white text-nowrap" to={link}>
-    &nbsp;/ {itemName} /&nbsp;
-  </Link>
-)
-
 export default () => {
   return (
     <div className="container-fluid fixed-top" id="main-nav">
@@ -29,9 +23,26 @@ export default () => {
         </a>
         <div className="collapse navbar-collapse ">
           <div className="navbar-nav nav-justified ml-auto">
-            {routes.map(({ title, path }) => (
-              <NavigationItem itemName={title["cn"]} link={path || "/404"} />
-            ))}
+            {routes.map(({ title, path, external }) =>
+              external ? (
+                <a
+                  key={path}
+                  className="nav-item nav-link text-white text-nowrap"
+                  href={path}
+                  target="_blank"
+                >
+                  &nbsp;/ {title["cn"]} /&nbsp;
+                </a>
+              ) : (
+                <Link
+                  key={path}
+                  className="nav-item nav-link text-white text-nowrap"
+                  to={path || "/404"}
+                >
+                  &nbsp;/ {title["cn"]} /&nbsp;
+                </Link>
+              )
+            )}
           </div>
         </div>
       </nav>
