@@ -1,19 +1,26 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import Icon from "@mdi/react"
-import { mdiLoading } from "@mdi/js"
-import MainLayout from "../components/MainLayout"
-import SEO from "../components/seo"
+import Icon from '@mdi/react'
+import { mdiLoading } from '@mdi/js'
+import MainLayout from '../components/MainLayout'
+import SEO from '../components/seo'
 
-import Carousel from "../components/Carousel"
+import Carousel from '../components/Carousel'
 
 export default ({ data, location }) => {
   const siteTitle = `${data.site.siteMetadata.title} - 其实你知的我是那面`
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <MainLayout location={location} title="凡所有相，皆是虚妄" fluid>
+    <MainLayout
+      location={location}
+      sectionProps={{
+        title: '凡所有相，皆是虚妄',
+        subTitle: 'JUST FOR MAN FASHION NEWISM',
+      }}
+      fluid
+    >
       <div className="limit-area text-center index-module-0">
         <h2>·&nbsp;推荐&nbsp;·</h2>
         <Carousel />
@@ -76,26 +83,25 @@ export default ({ data, location }) => {
               </dt>
               <dd>
                 <p>
-                  赤琦：赤红色的美玉
-                  <br />
-                  RedBlue：据赤红，琦蓝而译
+                  🙋‍♂️ 赤琦：赤红色的美玉
+                  <br />✨ RedBlue：据赤红，琦蓝而译
                 </p>
               </dd>
               <dd>
                 <p>
-                  <i className="fa fa-map-marker" />
-                  坐标：福州
+                  <i className="la la-location-arrow"> </i>
+                  Lcation：福州
                 </p>
               </dd>
               <dd>
                 <p>
-                  <i className="fa fa-mortar-board" />
+                  <i className="la la-graduation-cap"> </i>
                   专业：物联网工程
                 </p>
               </dd>
               <dd>
                 <p>
-                  <i className="fa fa-id-card-o" />
+                  <i className="la la-atom"></i>
                   简介：来自彩云之南的 95
                   后男孩，偏执的完美主义者，体现在方方面面。
                   <br />
@@ -124,7 +130,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fields: { draft: { eq: false } } }
+      filter: { fields: { draft: { ne: false } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 5
     ) {

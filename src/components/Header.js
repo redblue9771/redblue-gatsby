@@ -1,17 +1,8 @@
-import React from "react"
+import React from 'react'
 
-export default ({ location, title, date, children }) => {
+export default ({ title = '', subTitle = '', date }) => {
   const renderTitle = () => {
-    if (location.pathname === `${__PATH_PREFIX__}/`) {
-      return (
-        <React.Fragment>
-          <h1 className="display-1" id="post-title">
-            {title}
-          </h1>
-          <h2 />
-        </React.Fragment>
-      )
-    } 
+    if (date) {
       return (
         <React.Fragment>
           <h1 className="display-1" id="post-title">
@@ -21,13 +12,23 @@ export default ({ location, title, date, children }) => {
           <time>{date}</time>
         </React.Fragment>
       )
-    
+    }
+    return (
+      <React.Fragment>
+        <h1 className="display-1" id="post-title">
+          {title}
+        </h1>
+        <h2>{subTitle}</h2>
+      </React.Fragment>
+    )
   }
 
   return (
     <div className="head">
       <div className="header">
-        <header id="head">{renderTitle()}</header>
+        <header id="head" data-sal="fade">
+          {renderTitle()}
+        </header>
       </div>
       <div className="header-after" />
     </div>

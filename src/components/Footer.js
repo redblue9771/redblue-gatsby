@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 export default () => {
   return (
@@ -13,15 +13,15 @@ export default () => {
           </p>
           <p>
             <a href="/index.xml" target="_blank">
-              <i className="fa fa-rss" /> RSS
+              <i className="las la-rss" /> RSS
             </a>
             丨
             <a href="https://github.com/redblue9771" target="_blank">
-              <i className="fa fa-github" /> GitHub
+              <i className="lab la-github" /> GitHub
             </a>
             丨
             <a href="mailto:redblue9771@outlook.com" target="_blank">
-              <i className="fa fa-drivers-license-o" /> E-mail
+              <i className="las la-at" /> E-mail
             </a>
           </p>
           <p>复兴中华 - 新中国、新时代、新青年 - 中华复兴</p>

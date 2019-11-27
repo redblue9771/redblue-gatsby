@@ -2,11 +2,55 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import MainLayout from '../components/MainLayout'
 import '../assets/css/timeline.min.css'
+import clsx from 'clsx'
 
-export default ({ location, data }) => {
-  const { edges: posts = [] } = data.allMarkdownRemark
+export default ({
+  location,
+  data: {
+    allMarkdownRemark: {
+      edges: posts,
+      pageInfo: { currentPage, pageCount, hasPreviousPage, hasNextPage },
+    },
+    site,
+  },
+}) => {
+  const renderPagination = () => {
+    const template = []
+    for (let pageIndex = 1; pageIndex <= pageCount; pageIndex++) {
+      if (currentPage === pageIndex) {
+        template.push(
+          <li
+            className="page-item active"
+            aria-current="page"
+            key={`page${pageIndex}`}
+          >
+            <span className="page-link">{pageIndex}</span>
+          </li>
+        )
+      } else {
+        template.push(
+          <li className="page-item" key={`page${pageIndex}`}>
+            <Link
+              className="page-link"
+              to={`/spirits/${pageIndex === 1 ? '' : pageIndex}`}
+            >
+              {pageIndex}
+            </Link>
+          </li>
+        )
+      }
+    }
+    return template
+  }
+
   return (
-    <MainLayout location={location}>
+    <MainLayout
+      location={location}
+      sectionProps={{
+        title: '我非生而知之者',
+        subTitle: '学而时习之',
+      }}
+    >
       <div className="position-relative" id="blog-section">
         <nav aria-label="breadcrumb">
           <ul className="breadcrumb justify-content-end">
@@ -32,7 +76,7 @@ export default ({ location, data }) => {
         <div className="row">
           <div className="timeline timeline-line-dotted">
             {posts.map(({ node }) => (
-              <React.Fragment>
+              <React.Fragment key={node.fields.slug}>
                 <span className="timeline-label">
                   <span className="label label-info">
                     {node.frontmatter.date || new Date().toLocaleDateString()}
@@ -42,7 +86,7 @@ export default ({ location, data }) => {
                   <div className="timeline-point timeline-point-info">
                     <i className="fa fa-circle" />
                   </div>
-                  <div>
+                  <div data-sal="slide-up">
                     <Link to={node.fields.slug}>
                       <div className="timeline-heading">
                         <h5>
@@ -68,7 +112,29 @@ export default ({ location, data }) => {
             ))}
           </div>
         </div>
-        {/* 分页面 */}
+        {pageCount !== 1 && (
+          <ul className="pagination">
+            {hasPreviousPage && (
+              <li className="page-item">
+                <Link className="page-link" aria-label="First" to="/spirits/">
+                  <span aria-hidden="true">&laquo;</span>
+                </Link>
+              </li>
+            )}
+            {renderPagination()}
+            {hasNextPage && (
+              <li className="page-item">
+                <Link
+                  className="page-link"
+                  aria-label="Last"
+                  to={`/spirits/${pageCount}`}
+                >
+                  <span aria-hidden="true">&raquo;</span>
+                </Link>
+              </li>
+            )}
+          </ul>
+        )}
       </div>
     </MainLayout>
   )
@@ -100,6 +166,12 @@ export const pageQuery = graphql`
             author
           }
         }
+      }
+      pageInfo {
+        currentPage
+        pageCount
+        hasPreviousPage
+        hasNextPage
       }
     }
   }

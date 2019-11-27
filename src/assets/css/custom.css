@@ -49,14 +49,14 @@ text.actor {
 
 .messageLine0 {
   stroke-width: 1.5;
-  stroke-dasharray: "2 2";
-  marker-end: "url(#arrowhead)";
+  stroke-dasharray: '2 2';
+  marker-end: 'url(#arrowhead)';
   stroke: #333;
 }
 
 .messageLine1 {
   stroke-width: 1.5;
-  stroke-dasharray: "2 2";
+  stroke-dasharray: '2 2';
   stroke: #333;
 }
 
@@ -91,8 +91,8 @@ text.actor {
 
 .loopLine {
   stroke-width: 2;
-  stroke-dasharray: "2 2";
-  marker-end: "url(#arrowhead)";
+  stroke-dasharray: '2 2';
+  marker-end: 'url(#arrowhead)';
   stroke: #ccccff;
 }
 
@@ -324,7 +324,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
 }
 
 hr {
@@ -360,7 +361,7 @@ article h4::before,
 article h5::before,
 article h6::before {
   display: block;
-  content: " ";
+  content: ' ';
   height: 2em;
   margin-top: -2em;
   visibility: hidden;
@@ -397,6 +398,10 @@ p code {
   color: #ff4081;
 }
 
+#main-nav {
+  transition: all 0.5s;
+}
+
 #main-nav > nav {
   max-width: 1024px;
   padding: 0.6rem 2rem;
@@ -405,6 +410,10 @@ p code {
 #main-nav a:hover {
   color: #f44336 !important;
   text-decoration: line-through;
+}
+
+.navbar-toggler {
+  padding: 0 0 0 1.5em;
 }
 
 .navbar-brand {
@@ -706,7 +715,7 @@ img {
 }
 
 .tags a:not(:last-child)::after {
-  content: "、";
+  content: '、';
 }
 
 #blog-article p {
@@ -879,7 +888,7 @@ details[open] + div {
 
 .index-module-1 {
   color: #fff;
-  background: url("/img/bg-1.webp") center no-repeat;
+  background: url('/img/bg-1.webp') center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   margin-bottom: 4rem;

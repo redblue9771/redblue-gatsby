@@ -4,7 +4,13 @@ import '../assets/css/timeline.min.css'
 
 export default ({ location }) => {
   return (
-    <MainLayout location={location} title="aa">
+    <MainLayout
+      location={location}
+      sectionProps={{
+        title: '吾与徐工孰娴编码之技',
+        subTitle: 'One great project can change the world',
+      }}
+    >
       <div className="col-md-12">
         <div className="row mb-5">
           <h3 className="mb-4">
