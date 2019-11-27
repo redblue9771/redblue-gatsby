@@ -5,17 +5,17 @@ export default ({ data, location }) => {
   return (
     <MainLayout location={location}>
       <section>
-        <h3 class="mb-3 text-new"></h3>
+        <h3 className="mb-3 text-new" />
         <ul>
-          <li id="{{.name}}" class="clearfix mb-3">
+          <li id="{{.name}}" className="clearfix mb-3">
             <div>《 .name 》-.author</div>
-            <div class="text-muted">简述：.description</div>
+            <div className="text-muted">简述：.description</div>
 
-            <div class="text-muted tags mb-3">
-              关键词：.tag<a rel="bookmark"></a>
+            <div className="text-muted tags mb-3">
+              关键词：.tag<a rel="bookmark" />
             </div>
             <a
-              class="btn btn-outline-primary float-right btn-sm"
+              className="btn btn-outline-primary float-right btn-sm"
               href="/libraries/{{.path}}"
               target="_blank"
               rel="contents"

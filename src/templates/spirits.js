@@ -1,10 +1,9 @@
-import React from "react"
-import MainLayout from "../../components/MainLayout"
-import "../../assets/css/timeline.min.css"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import MainLayout from '../components/MainLayout'
+import '../assets/css/timeline.min.css'
 
 export default ({ location, data }) => {
-  console.log(data)
   const { edges: posts = [] } = data.allMarkdownRemark
   return (
     <MainLayout location={location}>
@@ -13,7 +12,7 @@ export default ({ location, data }) => {
           <ul className="breadcrumb justify-content-end">
             <li>分类：</li>
             <li className="breadcrumb-item">
-              <a href="{{.Permalink }}"></a>
+              <a href="{{.Permalink }}" />
             </li>
           </ul>
           <ul className="breadcrumb justify-content-end">
@@ -33,7 +32,7 @@ export default ({ location, data }) => {
         <div className="row">
           <div className="timeline timeline-line-dotted">
             {posts.map(({ node }) => (
-              <>
+              <React.Fragment>
                 <span className="timeline-label">
                   <span className="label label-info">
                     {node.frontmatter.date || new Date().toLocaleDateString()}
@@ -41,7 +40,7 @@ export default ({ location, data }) => {
                 </span>
                 <div className="timeline-item">
                   <div className="timeline-point timeline-point-info">
-                    <i className="fa fa-circle"></i>
+                    <i className="fa fa-circle" />
                   </div>
                   <div>
                     <Link to={node.fields.slug}>
@@ -57,14 +56,15 @@ export default ({ location, data }) => {
                       </div>
                       <div className="timeline-footer">
                         <p className="text-right">
-                          <i className="fa fa-pencil"></i>&nbsp;
+                          <i className="fa fa-pencil" />
+                          &nbsp;
                           {node.frontmatter.author}
                         </p>
                       </div>
                     </Link>
                   </div>
                 </div>
-              </>
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -75,16 +75,17 @@ export default ({ location, data }) => {
 }
 
 export const pageQuery = graphql`
-  query {
+  query($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
     allMarkdownRemark(
-      filter: { fields: { draft: { eq: false } } }
+      filter: { fields: { draft: { ne: true } } }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 1000
+      skip: $skip
+      limit: $limit
     ) {
       edges {
         node {

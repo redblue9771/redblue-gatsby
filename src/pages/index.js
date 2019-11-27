@@ -1,12 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Icon from "@mdi/react"
+import { mdiLoading } from "@mdi/js"
 import MainLayout from "../components/MainLayout"
 import SEO from "../components/seo"
 
 import Carousel from "../components/Carousel"
-import Icon from "@mdi/react"
-import { mdiLoading } from "@mdi/js"
 
 export default ({ data, location }) => {
   const siteTitle = `${data.site.siteMetadata.title} - 其实你知的我是那面`
@@ -18,7 +18,7 @@ export default ({ data, location }) => {
         <h2>·&nbsp;推荐&nbsp;·</h2>
         <Carousel />
         <div>
-          <div height="20vh,40vh" width="75vw,70vw"></div>
+          <div height="20vh,40vh" width="75vw,70vw" />
         </div>
         <img
           src="/img/gopher_head.png"
@@ -52,7 +52,7 @@ export default ({ data, location }) => {
                 )
               })}
               <dd>
-                <a href="" className="d-block text-truncate"></a>
+                <a href="" className="d-block text-truncate" />
               </dd>
             </dl>
           </div>
@@ -83,19 +83,19 @@ export default ({ data, location }) => {
               </dd>
               <dd>
                 <p>
-                  <i className="fa fa-map-marker"></i>
+                  <i className="fa fa-map-marker" />
                   坐标：福州
                 </p>
               </dd>
               <dd>
                 <p>
-                  <i className="fa fa-mortar-board"></i>
+                  <i className="fa fa-mortar-board" />
                   专业：物联网工程
                 </p>
               </dd>
               <dd>
                 <p>
-                  <i className="fa fa-id-card-o"></i>
+                  <i className="fa fa-id-card-o" />
                   简介：来自彩云之南的 95
                   后男孩，偏执的完美主义者，体现在方方面面。
                   <br />
@@ -109,7 +109,7 @@ export default ({ data, location }) => {
       <div className="limit-area pt-5">
         <h4 className="d-block text-center">·&nbsp;编码统计&nbsp;·</h4>
         <figure>
-          <embed src="https://wakatime.com/share/@redblue/31eeb3ce-ba04-46d4-be43-9c09edf88c5c.svg"></embed>
+          <embed src="https://wakatime.com/share/@redblue/31eeb3ce-ba04-46d4-be43-9c09edf88c5c.svg" />
         </figure>
       </div>
     </MainLayout>

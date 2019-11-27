@@ -1,4 +1,3 @@
-console.log(process.env)
 module.exports = {
   siteMetadata: {
     title: `RedBlue | 赤琦`,
@@ -40,19 +39,25 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-draft`,
+    {
+      resolve: 'gatsby-plugin-draft',
+      options: {
+        timezone: 'Asia/Shanghai',
+        publishDraft: process.env.NODE_ENV !== 'production',
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-feed`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-plugin-categories",
+      resolve: 'gatsby-plugin-categories',
       options: {
         templatePath: `${__dirname}/src/templates/category.js`,
       },
     },
     {
-      resolve: "gatsby-plugin-tags",
+      resolve: 'gatsby-plugin-tags',
       options: {
         templatePath: `${__dirname}/src/templates/tag.js`,
       },
@@ -105,8 +110,8 @@ module.exports = {
         variables: {
           userFirst: 3,
           searchFirst: 2,
-          q: "author:ldd is:merged state:closed type:pr sort:comments",
-          author: "ldd",
+          q: 'author:ldd is:merged state:closed type:pr sort:comments',
+          author: 'ldd',
         },
       },
     },

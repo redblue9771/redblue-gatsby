@@ -9,7 +9,6 @@
     "bootstrap.native": "latest",
     "dotenv": "latest",
     "gatsby": "latest",
-    "gatsby-awesome-pagination": "latest",
     "gatsby-image": "latest",
     "gatsby-plugin-categories": "latest",
     "gatsby-plugin-draft": "latest",
@@ -39,14 +38,45 @@
     "referrer-policy": "latest"
   },
   "devDependencies": {
-    "prettier": "latest"
+    "babel-eslint": "latest",
+    "eslint": "latest",
+    "eslint-config-airbnb": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-import-resolver-webpack": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-jsx-a11y": "latest",
+    "eslint-plugin-react": "latest",
+    "eslint-plugin-react-hooks": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest",
+    "prettier-eslint-cli": "latest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-merge": "lint-staged",
+      "pre-rebase": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "prettier-eslint",
+      "git add"
+    ],
+    "*.+(css)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "license": "MIT",
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "lint": "eslint \"src/**/*.+(js|jsx)\"",
+    "fix": "eslint --fix \"src/**/*.+(js|jsx)\"",
+    "format": "prettier --write \"**/*.+(js|jsx|css)\"",
     "start": "yarn develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""

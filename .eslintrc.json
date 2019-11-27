@@ -1,0 +1,68 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true
+    },
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.js"
+      }
+    }
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/prop-types": "off",
+    "no-unused-vars": "off",
+    "no-bitwise": "off",
+    "no-duplicate-imports": "warn",
+    "no-underscore-dangle": "off",
+    "react/jsx-fragments": [
+      "warn",
+      "element"
+    ],
+    "no-shadow": [
+      "warn",
+      {
+        "hoist": "never",
+        "allow": [
+          "done"
+        ]
+      }
+    ],
+    "react/no-array-index-key": "off",
+    "react/jsx-props-no-spreading": "warn",
+    "no-restricted-syntax": "off",
+    "no-nested-ternary": "off",
+    "no-console": "off",
+    "jsx-a11y/anchor-is-valid": "off" // for Nextjs Link, if you use it in React, it should be enabled
+  },
+  "parser": "babel-eslint"
+}

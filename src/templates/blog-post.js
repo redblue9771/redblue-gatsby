@@ -1,10 +1,10 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import SEO from "../components/seo"
-import MainLayout from "../components/MainLayout"
-import "katex/dist/katex.min.css"
-import "../assets/css/highlighting.css"
+import SEO from '../components/seo'
+import MainLayout from '../components/MainLayout'
+import 'katex/dist/katex.min.css'
+import '../assets/css/highlighting.css'
 
 export default ({ location, data, pageContext }) => {
   const post = data.markdownRemark
@@ -17,9 +17,9 @@ export default ({ location, data, pageContext }) => {
       <aside className="sticky-top float-md-right" id="blog-aside">
         <section>
           <div className="divider">
-            <span></span>
+            <span />
             <span>更多</span>
-            <span></span>
+            <span />
           </div>
 
           {previous && (
@@ -53,27 +53,28 @@ export default ({ location, data, pageContext }) => {
             <tbody>
               <tr>
                 {frontmatter.original ? (
-                  <>
+                  <React.Fragment>
                     <td>协议</td>
                     <td>遵照原文使用协议，详情查看原文出处。</td>
-                  </>
+                  </React.Fragment>
                 ) : (
-                  <>
+                  <React.Fragment>
                     <td>协议</td>
                     <td>
                       采用
                       <a
                         rel="license"
                         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                        // eslint-disable-next-line react/jsx-no-target-blank
                         target="_blank"
-                        rel="copyright"
                       >
-                        <i class="fa fa-cc"></i>知识共享署名 - 非商业性使用 -
+                        <i className="fa fa-cc" />
+                        知识共享署名 - 非商业性使用 -
                         相同方式共享4.0国际许可协议
                       </a>
                       进行许可
                     </td>
-                  </>
+                  </React.Fragment>
                 )}
               </tr>
               {/* <tr>
@@ -94,19 +95,19 @@ export default ({ location, data, pageContext }) => {
           </table>
         </address>
         <div className="divider d-none d-md-block">
-          <span></span>
+          <span />
           <span>正文</span>
-          <span></span>
+          <span />
         </div>
         <article
           id="blog-article"
           dangerouslySetInnerHTML={{ __html: post.html }}
-        ></article>
+         />
         <p>（完）</p>
         <div className="divider">
-          <span></span>
+          <span />
           <span>评论</span>
-          <span></span>
+          <span />
         </div>
         {/* <script src="https://utteranc.es/client.js" repo="redblue9771/comments-for-redblue" issue-term="url" label="comment" theme="github-light" crossorigin="anonymous" async></script> */}
       </main>

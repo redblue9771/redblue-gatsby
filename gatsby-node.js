@@ -1,13 +1,11 @@
-const path = require(`path`)
+const path = require('path')
+const { createFilePath } = require('gatsby-source-filesystem')
 
-const { createFilePath } = require(`gatsby-source-filesystem`)
-// const { paginate, createPagePerItem } = require(`gatsby-awesome-pagination`)
-
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  return graphql(
+  const result = await graphql(
     `
       {
         allMarkdownRemark(
@@ -27,36 +25,49 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors
-    }
+  )
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
 
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges
+  // Create blog posts pages.
+  const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+  posts.forEach((post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    const next = index === 0 ? null : posts[index - 1].node
 
+    createPage({
+      path: post.node.fields.slug,
+      component: blogPost,
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
+    // Create blog post list pages
+    const postsPerPage = 10
+    const numPages = Math.ceil(posts.length / postsPerPage)
+
+    Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: post.node.fields.slug,
-        component: blogPost,
+        path: i === 0 ? `/spirits` : `/spirits/${i + 1}`,
+        component: path.resolve('./src/templates/spirits.js'),
         context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
         },
       })
     })
-
-    return null
   })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
@@ -66,64 +77,3 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
-
-// exports.createPages = ({ graphql, boundActionCreators }) => {
-//   const { createPage } = boundActionCreators
-
-//   // We return a promise immediately
-//   return new Promise((resolve, reject) => {
-//     // Start by creating all the blog pages
-//     const blogPost = path.resolve("./src/templates/blog-post.js")
-//     const blogIndex = path.resolve("./src/templates/blog-index.js")
-//     resolve(
-//       graphql(
-//         `
-//           {
-//             allMarkdownRemark(
-//               sort: { fields: [frontmatter___date], order: DESC }
-//             ) {
-//               edges {
-//                 node {
-//                   id
-//                   frontmatter {
-//                     permalink
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         `
-//       ).then(result => {
-//         if (result.errors) {
-//           console.log(result.errors)
-//           reject(result.errors)
-//         }
-
-//         // Get an array of posts from the query result
-//         const blogPosts = _.get(result, "data.allMarkdownRemark.edges")
-
-//         // Create the blog index pages like `/blog`, `/blog/2`, `/blog/3`, etc.
-//         // The first page will have 3 items and each following page will have 10
-//         // blog posts and a link to the next and previous pages.
-//         paginate({
-//           createPage,
-//           items: blogPosts,
-//           component: blogIndex,
-//           itemsPerPage: 10,
-//           itemsPerFirstPage: 3,
-//           pathPrefix: "/blog",
-//         })
-
-//         // Create one page per blog post, with a link to the previous and next
-//         // blog posts.
-//         createPagePerItem({
-//           createPage,
-//           items: blogPosts,
-//           component: blogPost,
-//           itemToPath: "node.frontmatter.permalink",
-//           itemToId: "node.id",
-//         })
-//       })
-//     )
-//   })
-// }

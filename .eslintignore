@@ -1,0 +1,20 @@
+# node_modules
+node_modules/
+
+# build
+build/
+
+# dist
+dist/
+
+# public
+public/
+static/
+
+# serviceWorker
+src/serviceWorker.js
+
+# next
+.next/
+
+

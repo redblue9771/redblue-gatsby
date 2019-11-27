@@ -1,0 +1,14 @@
+# node_modules
+node_modules/
+
+# build
+build/
+
+# dist
+dist/
+
+# public
+public/
+
+# next
+.next/

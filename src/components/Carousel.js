@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import carousel from "../utils/carousel"
 import { Helmet } from "react-helmet"
+import carousel from "../utils/carousel"
 
 export default () => {
   return (
@@ -35,7 +35,7 @@ export default () => {
         role="button"
         data-slide="prev"
       >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="carousel-control-prev-icon" aria-hidden="true" />
       </a>
       <a
         className="carousel-control-next"
@@ -43,10 +43,10 @@ export default () => {
         role="button"
         data-slide="next"
       >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="carousel-control-next-icon" aria-hidden="true" />
       </a>
       <Helmet>
-        <script src="/js/bootstrap-native-v4.min.js"></script>
+        <script src="/js/bootstrap-native-v4.min.js" />
       </Helmet>
     </div>
   )
