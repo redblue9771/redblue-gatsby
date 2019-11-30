@@ -1,29 +1,22 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 
-import SEO from "../components/seo"
-import PostsList from "../components/PostsList"
-import MainLayout from "../components/MainLayout"
+import SEO from '../components/seo'
+import PostsList from '../components/PostsList'
 
 export default ({ location, pageContext, data }) => {
   const { tag } = pageContext
 
   if (!tag) {
-    return (
-      <MainLayout location={location} title={`Posts in tag "${tag}"`}>
-        all tags
-      </MainLayout>
-    )
+    return 'all tags'
   }
 
   return (
-    <MainLayout location={location} title={`Posts in tag "${tag}"`}>
-      <div className="tag-container">
-        <SEO title={`Posts in tag "${tag}"`} />
-        <h1>Tag: {tag}</h1>
-        <PostsList postEdges={data.allMarkdownRemark.edges} />
-      </div>
-    </MainLayout>
+    <div className="tag-container">
+      <SEO title={`Posts in tag "${tag}"`} />
+      <h1>Tag: {tag}</h1>
+      <PostsList postEdges={data.allMarkdownRemark.edges} />
+    </div>
   )
 }
 

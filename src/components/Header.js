@@ -1,26 +1,29 @@
 import React from 'react'
 
-export default ({ title = '', subTitle = '', date }) => {
+export default ({ subTitle = '', description = '', date, layout = '' }) => {
   const renderTitle = () => {
-    if (date) {
-      return (
-        <React.Fragment>
-          <h1 className="display-1" id="post-title">
-            {title}
-          </h1>
-          <span>日期：</span>
-          <time>{date}</time>
-        </React.Fragment>
-      )
+    switch (layout) {
+      case 'post':
+        return (
+          <React.Fragment>
+            <h1 className="display-1" id="post-title">
+              {subTitle}
+            </h1>
+            <span>日期：</span>
+            <time>{date}</time>
+          </React.Fragment>
+        )
+
+      default:
+        return (
+          <React.Fragment>
+            <h1 className="display-1" id="post-title">
+              {subTitle}
+            </h1>
+            <h2>{description}</h2>
+          </React.Fragment>
+        )
     }
-    return (
-      <React.Fragment>
-        <h1 className="display-1" id="post-title">
-          {title}
-        </h1>
-        <h2>{subTitle}</h2>
-      </React.Fragment>
-    )
   }
 
   return (

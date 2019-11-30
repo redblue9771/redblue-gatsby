@@ -5,21 +5,30 @@ import '../assets/css/custom.css'
 import 'line-awesome/dist/line-awesome/css/line-awesome.min.css'
 
 import { Helmet } from 'react-helmet'
+import { useStaticQuery, graphql } from 'gatsby'
+import { ApolloProvider } from '@apollo/react-hooks'
 import Navigation from './Navigation'
 import Header from './Header'
 import Footer from './Footer'
 
 import { useClientRect } from '../utils/hooks'
+import client from '../utils/client'
 
-export default ({
-  children,
-  location,
-  title,
-  fluid = false,
-  sectionProps = {},
-}) => {
+const defaultPageState = {
+  title: '',
+  subTitle: '',
+  description: '',
+  date: '',
+  layout: '',
+}
+
+export const PageState = React.createContext(defaultPageState)
+
+export default ({ children }) => {
   const [isTransed, setIsTransed] = React.useState(false)
   const [rect, ref] = useClientRect()
+
+  const [currPageState, setCurrPageState] = React.useState(defaultPageState)
 
   const handleScroll = React.useCallback(() => {
     requestAnimationFrame(() => {
@@ -40,22 +49,47 @@ export default ({
     }
   }, [handleScroll])
 
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+
   return (
-    <React.StrictMode>
+    <React.Fragment>
+      <Helmet>
+        <title>
+          {`${currPageState.title} - ${
+            currPageState.layout === 'home'
+              ? '其实你知的我是那面'
+              : siteMetadata.title
+          }`}
+        </title>
+      </Helmet>
       <Navigation
-        title={isTransed ? sectionProps.title : title}
-        titleBgc={isTransed ? '#448AFF' : 'transparent'}
+        title={isTransed ? currPageState.subTitle : siteMetadata.title}
+        styleName={isTransed ? 'main-nav-scroll' : ''}
       />
-      <Header location={location} {...sectionProps} />
+      <Header {...currPageState} />
       <div
         className={`container-fluid clearfix ${
-          fluid ? 'main-area-fluid' : 'main-area'
+          currPageState.layout === 'home' ? 'main-area-fluid' : 'main-area'
         }`}
         ref={ref}
       >
-        {children}
+        <PageState.Provider value={{ setCurrPageState }}>
+          <ApolloProvider client={client}>{children}</ApolloProvider>
+        </PageState.Provider>
       </div>
       <Footer />
-    </React.StrictMode>
+    </React.Fragment>
   )
 }

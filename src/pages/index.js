@@ -3,24 +3,75 @@ import { Link, graphql } from 'gatsby'
 
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
-import MainLayout from '../components/MainLayout'
-import SEO from '../components/seo'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import { PageState } from '../components/MainLayout'
+import SEO from '../components/SEO'
 
 import Carousel from '../components/Carousel'
 
-export default ({ data, location }) => {
-  const siteTitle = `${data.site.siteMetadata.title} - 其实你知的我是那面`
-  const posts = data.allMarkdownRemark.edges
+const GITHUB_QUERY = gql`
+  {
+    viewer {
+      repositories(
+        privacy: PUBLIC
+        isFork: false
+        first: 5
+        orderBy: { field: UPDATED_AT, direction: DESC }
+      ) {
+        nodes {
+          name
+          description
+          url
+        }
+      }
+    }
+  }
+`
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(
+      filter: { fields: { draft: { ne: true } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 5
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+          }
+        }
+      }
+    }
+  }
+`
+
+export default ({
+  data: {
+    allMarkdownRemark: { edges: posts = [] },
+  },
+}) => {
+  const { setCurrPageState } = React.useContext(PageState)
+  const { loading, error, data } = useQuery(GITHUB_QUERY)
+
+  React.useEffect(() => {
+    setCurrPageState({
+      title: 'RedBlue | 赤琦',
+      subTitle: '凡所有相，皆是虚妄',
+      description: 'JUST FOR MAN FASHION NEWISM',
+      layout: 'home',
+    })
+  }, [])
 
   return (
-    <MainLayout
-      location={location}
-      sectionProps={{
-        title: '凡所有相，皆是虚妄',
-        subTitle: 'JUST FOR MAN FASHION NEWISM',
-      }}
-      fluid
-    >
+    <React.Fragment>
       <div className="limit-area text-center index-module-0">
         <h2>·&nbsp;推荐&nbsp;·</h2>
         <Carousel />
@@ -58,9 +109,6 @@ export default ({ data, location }) => {
                   </dd>
                 )
               })}
-              <dd>
-                <a href="" className="d-block text-truncate" />
-              </dd>
             </dl>
           </div>
           <div className="col-md-4 pd-1 text-center bg-color-white">
@@ -68,12 +116,33 @@ export default ({ data, location }) => {
               <dt>
                 <h4>·&nbsp;项目&nbsp;·</h4>
               </dt>
-              <dd>
-                <p>
-                  <Icon path={mdiLoading} spin={1} size={1} />从
-                  github.com/redblue 拉取中…
-                </p>
-              </dd>
+
+              {(loading || error) && (
+                <dd>
+                  <p>
+                    <Icon path={mdiLoading} spin={1} size={1} />
+                    `从 github.com/redblue9771 拉取中…`
+                  </p>
+                </dd>
+              )}
+              {data &&
+                data.viewer.repositories.nodes.map(
+                  ({ name, description, url }) => (
+                    <dd key={name}>
+                      <a
+                        href={url}
+                        className="d-block text-truncate"
+                        target="_blank"
+                        rel=""
+                      >
+                        {name}
+                        <time className="d-block text-truncate">
+                          {description || 'No Description'}
+                        </time>
+                      </a>
+                    </dd>
+                  )
+                )}
             </dl>
           </div>
           <div className="col-md-4 pd-1 text-center bg-color-red">
@@ -101,7 +170,7 @@ export default ({ data, location }) => {
               </dd>
               <dd>
                 <p>
-                  <i className="la la-atom"></i>
+                  <i className="la la-atom" />
                   简介：来自彩云之南的 95
                   后男孩，偏执的完美主义者，体现在方方面面。
                   <br />
@@ -115,38 +184,13 @@ export default ({ data, location }) => {
       <div className="limit-area pt-5">
         <h4 className="d-block text-center">·&nbsp;编码统计&nbsp;·</h4>
         <figure>
-          <embed src="https://wakatime.com/share/@redblue/31eeb3ce-ba04-46d4-be43-9c09edf88c5c.svg" />
+          <object
+            title="编码统计"
+            type="image/svg+xml"
+            data="https://wakatime.com/share/@redblue/31eeb3ce-ba04-46d4-be43-9c09edf88c5c.svg"
+          />
         </figure>
       </div>
-    </MainLayout>
+    </React.Fragment>
   )
 }
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(
-      filter: { fields: { draft: { ne: false } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 5
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
-      }
-    }
-  }
-`

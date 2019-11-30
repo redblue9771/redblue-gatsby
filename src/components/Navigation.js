@@ -1,9 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link'
 import routes from '../utils/routes'
-
-import Icon from '@mdi/react'
-import { mdiViewDashboardOutline } from '@mdi/js'
 
 const renderRouter = routes.map(({ title, path, external }) =>
   external ? (
@@ -27,15 +24,13 @@ const renderRouter = routes.map(({ title, path, external }) =>
   )
 )
 
-export default ({ title = 'RedBlue | 赤琦', titleBgc = '#448AFF' }) => {
+export default ({ title = 'RedBlue | 赤琦', styleName = '' }) => {
   return (
-    <div
-      id="main-nav"
-      className="container-fluid fixed-top"
-      style={{ backgroundColor: titleBgc }}
-      data-sal="slide-down"
-    >
-      <nav className="navbar text-white d-flex flex-nowrap navbar-expand-md mx-auto">
+    <div id="main-nav" className={`container-fluid fixed-top ${styleName}`}>
+      <nav
+        data-sal="slide-down"
+        className="navbar text-white d-flex flex-nowrap navbar-expand-md mx-auto"
+      >
         <Link
           className="navbar-brand flex-grow-1 text-truncate text-white"
           to="/"
@@ -51,14 +46,14 @@ export default ({ title = 'RedBlue | 赤琦', titleBgc = '#448AFF' }) => {
           aria-expanded="true"
           aria-label="Toggle navigation"
         >
-          <i className="lab la-gitter"></i>
+          <i className="lab la-gitter" />
         </a>
         <div className="collapse navbar-collapse">
           <div className="navbar-nav nav-justified ml-auto">{renderRouter}</div>
         </div>
       </nav>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav nav-justified ml-auto">{renderRouter}</div>
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav nav-justified ml-auto">{renderRouter}</div>
       </div>
     </div>
   )

@@ -398,8 +398,14 @@ p code {
   color: #ff4081;
 }
 
-#main-nav {
+#main-nav,
+.head {
   transition: all 0.5s;
+}
+
+.main-nav-scroll {
+  background-color: #448aff;
+  box-shadow: 0 0 6px 0px #448aff;
 }
 
 #main-nav > nav {

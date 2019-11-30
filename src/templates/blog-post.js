@@ -1,16 +1,24 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-
-import SEO from '../components/seo'
-import MainLayout from '../components/MainLayout'
+import { graphql, Link } from 'gatsby'
 import 'katex/dist/katex.min.css'
+import React from 'react'
 import '../assets/css/highlighting.css'
+import { PageState } from '../components/MainLayout'
 
-export default ({ location, data, pageContext }) => {
+export default ({ data, pageContext }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
   const { frontmatter } = post
+
+  const { setCurrPageState } = React.useContext(PageState)
+
+  React.useEffect(() => {
+    setCurrPageState({
+      title: frontmatter.title,
+      subTitle: frontmatter.title,
+      date: frontmatter.date,
+      layout: 'post',
+    })
+  }, [])
 
   const renderAside = () => {
     return (
@@ -39,14 +47,7 @@ export default ({ location, data, pageContext }) => {
   }
 
   return (
-    <MainLayout
-      location={location}
-      title={frontmatter.title}
-      sectionProps={{
-        title: frontmatter.title,
-        date: frontmatter.date,
-      }}
-    >
+    <React.Fragment>
       <main id="blog-single">
         <address>
           <table className="copyright">
@@ -102,7 +103,7 @@ export default ({ location, data, pageContext }) => {
         <article
           id="blog-article"
           dangerouslySetInnerHTML={{ __html: post.html }}
-         />
+        />
         <p>（完）</p>
         <div className="divider">
           <span />
@@ -112,7 +113,7 @@ export default ({ location, data, pageContext }) => {
         {/* <script src="https://utteranc.es/client.js" repo="redblue9771/comments-for-redblue" issue-term="url" label="comment" theme="github-light" crossorigin="anonymous" async></script> */}
       </main>
       {renderAside()}
-    </MainLayout>
+    </React.Fragment>
   )
 
   // return (

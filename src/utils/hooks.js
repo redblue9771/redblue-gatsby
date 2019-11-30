@@ -24,3 +24,5 @@ export const useClientRect = () => {
   }, [])
   return [rect, ref]
 }
+
+export default null

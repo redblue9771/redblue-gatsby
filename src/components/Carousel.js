@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Helmet } from "react-helmet"
-import carousel from "../utils/carousel"
+import React from 'react'
+import { Link } from 'gatsby'
+import { Helmet } from 'react-helmet'
+import carousel from '../data/carousel.json'
 
 export default () => {
   return (
@@ -11,23 +11,28 @@ export default () => {
       data-ride="carousel"
     >
       <div className="carousel-inner">
-        {carousel.map(({ title, link, cover, description }, index) => (
-          <div className={`carousel-item ${index ? "" : "active"}`} key={title}>
-            <a href={link} target="_blank">
-              <img className="d-block w-100" alt={title} src={cover} />
-              <div className="carousel-caption d-block">
-                <h4>
-                  <font style={{ verticalAlign: "inherit" }}>{title}</font>
-                </h4>
-                <p>
-                  <font style={{ verticalAlign: "inherit" }}>
-                    {description}
-                  </font>
-                </p>
-              </div>
-            </a>
-          </div>
-        ))}
+        {Object.values(carousel).map(
+          ({ title, link, cover, description }, index) => (
+            <div
+              className={`carousel-item ${index ? '' : 'active'}`}
+              key={title}
+            >
+              <a href={link} target="_blank" rel="noolopp">
+                <img className="d-block w-100" alt={title} src={cover} />
+                <div className="carousel-caption d-block">
+                  <h4>
+                    <font style={{ verticalAlign: 'inherit' }}>{title}</font>
+                  </h4>
+                  <p>
+                    <font style={{ verticalAlign: 'inherit' }}>
+                      {description}
+                    </font>
+                  </p>
+                </div>
+              </a>
+            </div>
+          )
+        )}
       </div>
       <a
         className="carousel-control-prev"

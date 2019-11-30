@@ -1,3 +1,7 @@
+require('dotenv').config()
+
+console.log(process.env.GATSBY_GITHUB_TOKEN)
+
 module.exports = {
   siteMetadata: {
     title: `RedBlue | 赤琦`,
@@ -10,15 +14,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content`,
-        name: `contentRoot`,
+        path: `${__dirname}/content/spirits`,
+        name: `spirits`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/assets`,
-        name: `assets`,
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
       },
     },
     {
@@ -36,20 +40,16 @@ module.exports = {
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
+          {
+            resolve: 'gatsby-plugin-draft',
+            options: {
+              timezone: 'Asia/Shanghai',
+              publishDraft: process.env.NODE_ENV !== 'production',
+            },
+          },
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-draft',
-      options: {
-        timezone: 'Asia/Shanghai',
-        publishDraft: process.env.NODE_ENV !== 'production',
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-feed`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-categories',
       options: {
@@ -63,58 +63,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-github-api`,
+      resolve: `gatsby-plugin-transition-link`,
       options: {
-        token: `7cf171465723f70a8d4a99a43d6b1c1024bb46f4`,
-        graphQLQuery: `
-        query ($author: String = "", $userFirst: Int = 0, $searchFirst: Int = 0, $q: String = "") {
-          user(login: $author) {
-            repositories(first: $userFirst, orderBy: {field: STARGAZERS, direction: DESC}) {
-              edges {
-                node {
-                  name
-                  description
-                  url
-                  stargazers {
-                    totalCount
-                  }
-                  readme: object(expression:"master:README.md"){
-                    ... on Blob{
-                      text
-                    }
-                  }
-                }
-              }
-            }
-          }
-          search(query: $q, type: ISSUE, first: $searchFirst) {
-            edges {
-              node {
-                ... on PullRequest {
-                  title
-                  merged
-                  url
-                  state
-                  repository {
-                    stargazers {
-                      totalCount
-                    }
-                    repoUrl: url
-                    name
-                  }
-                }
-              }
-            }
-          }
-        }`,
-        variables: {
-          userFirst: 3,
-          searchFirst: 2,
-          q: 'author:ldd is:merged state:closed type:pr sort:comments',
-          author: 'ldd',
-        },
+        layout: require.resolve(`./src/components/MainLayout`),
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-feed`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-scroll-reveal`,
   ],
 }
