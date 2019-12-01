@@ -4,7 +4,54 @@ const { createFilePath } = require('gatsby-source-filesystem')
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  // for pagination
+  const createPagination = (
+    pages,
+    perPage,
+    pathname,
+    component,
+    list = [],
+    currItem = '',
+    type = ''
+  ) => {
+    const numPages = Math.ceil(pages / perPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? pathname : `${pathname}/${i + 1}`,
+        component,
+        context: {
+          list: Array.from(list),
+          currItem,
+          type,
+          limit: perPage,
+          skip: i * perPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
+  }
+
+  const calcTotal = (obj, container = new Map()) => {
+    switch (Object.prototype.toString.call(obj)) {
+      case '[object Array]':
+        obj.forEach((child) => {
+          if (child) {
+            container.set(
+              child,
+              (container.has(child) ? container.get(child) : 0) + 1
+            )
+          }
+        })
+        return
+      case '[object String]':
+        container.set(obj, (container.has(obj) ? container.get(obj) : 0) + 1)
+        return
+      default:
+        return null
+    }
+  }
+
   const result = await graphql(
     `
       {
@@ -19,6 +66,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               }
               frontmatter {
                 title
+                category
+                tags
+                series
               }
             }
           }
@@ -31,38 +81,75 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
+  const spiritsSingle = path.resolve(`./src/templates/spirits-single.js`)
+
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
 
-  posts.forEach((post, index) => {
+  const categories = new Map()
+  const tags = new Map()
+  const series = new Map()
+
+  posts.forEach(({ node: { fields, frontmatter } }, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
+    calcTotal(frontmatter.category, categories)
+    calcTotal(frontmatter.tags, tags)
+    calcTotal(frontmatter.series, series)
+
     createPage({
-      path: post.node.fields.slug,
-      component: blogPost,
+      path: fields.slug,
+      component: spiritsSingle,
       context: {
-        slug: post.node.fields.slug,
+        slug: fields.slug,
         previous,
         next,
       },
     })
-    // Create blog post list pages
-    const postsPerPage = 10
-    const numPages = Math.ceil(posts.length / postsPerPage)
+  })
 
-    Array.from({ length: numPages }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? `/spirits` : `/spirits/${i + 1}`,
-        component: path.resolve('./src/templates/spirits.js'),
-        context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          numPages,
-          currentPage: i + 1,
-        },
-      })
-    })
+  createPagination(
+    posts.length,
+    10,
+    '/spirits',
+    path.resolve('./src/templates/spirits.js')
+  )
+
+  categories.forEach((val, key, map) => {
+    createPagination(
+      val,
+      10,
+      `/spirits/${key}`,
+      path.resolve('./src/templates/spirits.js'),
+      map.keys(),
+      key,
+      'categories'
+    )
+  })
+
+  tags.forEach((val, key, map) => {
+    createPagination(
+      val,
+      10,
+      `/spirits/tags/${key}`,
+      path.resolve('./src/templates/spirits.js'),
+      map.keys(),
+      key,
+      'tags'
+    )
+  })
+
+  series.forEach((val, key, map) => {
+    createPagination(
+      val,
+      10,
+      `/spirits/series/${key}`,
+      path.resolve('./src/templates/spirits.js'),
+      map.keys(),
+      key,
+      'series'
+    )
   })
 }
 

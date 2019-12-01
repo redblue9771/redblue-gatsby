@@ -14,8 +14,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/spirits`,
-        name: `spirits`,
+        name: `content`,
+        path: `${__dirname}/content`,
       },
     },
     {
@@ -48,18 +48,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-categories',
-      options: {
-        templatePath: `${__dirname}/src/templates/category.js`,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-tags',
-      options: {
-        templatePath: `${__dirname}/src/templates/tag.js`,
       },
     },
     {

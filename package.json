@@ -33,6 +33,7 @@
     "gatsby-transformer-javascript-frontmatter": "latest",
     "gatsby-transformer-remark": "latest",
     "gatsby-transformer-sharp": "latest",
+    "graphql-tag": "^2.10.1",
     "isomorphic-fetch": "latest",
     "katex": "latest",
     "line-awesome": "latest",

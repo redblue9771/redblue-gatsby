@@ -1,8 +1,8 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import MainLayout from "../components/MainLayout"
-import SEO from "../components/seo"
-import Carousel from "../components/Carousel"
+import React from 'react'
+import { graphql, Link } from 'gatsby'
+import MainLayout from '../components/MainLayout'
+import SEO from '../components/SEO'
+import Carousel from '../components/Carousel'
 
 export default ({ location }) => {
   return (

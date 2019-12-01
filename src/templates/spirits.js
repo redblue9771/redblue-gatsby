@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { PageState } from '../components/MainLayout'
 import '../assets/css/timeline.min.css'
+import GitHub from '../assets/img/undraw_developer_activity.svg'
 
 export default ({
   data: {
@@ -10,9 +11,10 @@ export default ({
       pageInfo: { currentPage, pageCount, hasPreviousPage, hasNextPage },
     },
   },
+  pageContext,
 }) => {
   const { setCurrPageState } = React.useContext(PageState)
-
+  console.log(pageContext)
   React.useEffect(() => {
     setCurrPageState({
       title: '博文',
@@ -52,7 +54,18 @@ export default ({
   }
 
   return (
-    <div className="position-relative" id="blog-section">
+    <div
+      className="position-relative"
+      id="blog-section"
+      style={{
+        background: `url(${GitHub})`,
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundOrigin: 'content-box',
+        backgroundAttachment: 'fixed',
+      }}
+    >
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
           <li>分类：</li>
@@ -160,6 +173,9 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            category
+            tags
+            series
             date(formatString: "MMMM DD, YYYY")
             title
             description

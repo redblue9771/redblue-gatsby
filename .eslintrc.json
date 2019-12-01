@@ -5,11 +5,7 @@
     "node": true,
     "jest": true
   },
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -33,10 +29,7 @@
     "react/jsx-filename-extension": [
       "warn",
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "react/prop-types": "off",
@@ -44,25 +37,20 @@
     "no-bitwise": "off",
     "no-duplicate-imports": "warn",
     "no-underscore-dangle": "off",
-    "react/jsx-fragments": [
-      "warn",
-      "element"
-    ],
+    "react/jsx-fragments": ["warn", "element"],
     "no-shadow": [
       "warn",
       {
         "hoist": "never",
-        "allow": [
-          "done"
-        ]
+        "allow": ["done"]
       }
     ],
     "react/no-array-index-key": "off",
-    "react/jsx-props-no-spreading": "warn",
+    "react/jsx-props-no-spreading": "off",
     "no-restricted-syntax": "off",
     "no-nested-ternary": "off",
     "no-console": "off",
-    "jsx-a11y/anchor-is-valid": "off" // for Nextjs Link, if you use it in React, it should be enabled
+    "jsx-a11y/anchor-is-valid": "off" // for Nextjs Link, if you use it in React, it should be enabled,
   },
   "parser": "babel-eslint"
 }

@@ -10,6 +10,8 @@ import SEO from '../components/SEO'
 
 import Carousel from '../components/Carousel'
 
+import GitHub from '../assets/img/undraw_developer_activity.svg'
+
 const GITHUB_QUERY = gql`
   {
     viewer {
@@ -61,6 +63,8 @@ export default ({
   const { setCurrPageState } = React.useContext(PageState)
   const { loading, error, data } = useQuery(GITHUB_QUERY)
 
+  console.log(GitHub)
+
   React.useEffect(() => {
     setCurrPageState({
       title: 'RedBlue | 赤琦',
@@ -111,8 +115,20 @@ export default ({
               })}
             </dl>
           </div>
-          <div className="col-md-4 pd-1 text-center bg-color-white">
-            <dl id="github-list">
+          <div
+            className="col-md-4 pd-1 text-center bg-color-white"
+            style={{
+              background: `url(${GitHub}) #fff`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundOrigin: 'content-box',
+            }}
+          >
+            <dl
+              id="github-list"
+              style={{ backgroundColor: 'rgba(255,255,255,0.618)' }}
+            >
               <dt>
                 <h4>·&nbsp;项目&nbsp;·</h4>
               </dt>

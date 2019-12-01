@@ -78,6 +78,7 @@ export default ({ children }) => {
         title={isTransed ? currPageState.subTitle : siteMetadata.title}
         styleName={isTransed ? 'main-nav-scroll' : ''}
       />
+
       <Header {...currPageState} />
       <div
         className={`container-fluid clearfix ${

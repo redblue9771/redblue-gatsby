@@ -195,7 +195,6 @@ export const pageQuery = graphql`
         author
       }
       fields {
-        tags
         slug
       }
     }
