@@ -1,14 +1,16 @@
 ---
 author: Brian（微信公众号：Brian在深圳 | brianinshenzhen）
-date: "2018-05-11"
+date: 2018-05-11
 original: https://www.douban.com/note/557947118/
-category:
+series:
   - 新青年
 tags:
   - 新知
   - 快文化
   - 终身学习
 title: 「快文化」崇拜的尽头是孤独海
+category:
+  - thinking
 ---
 
 ## 快餐

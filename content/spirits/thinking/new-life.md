@@ -1,14 +1,16 @@
 ---
 author: 赤琦
-date: "2018-03-22"
-original: ""
-category:
+date: 2018-03-22
+original:
+series:
   - 新青年
 tags:
   - 杂感
   - 大学
   - 青春
 title: 「涅槃」立德立言，无问西东
+category:
+  - thinking
 ---
 
 ## 开始

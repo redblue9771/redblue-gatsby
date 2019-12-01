@@ -1,11 +1,13 @@
 ---
 author: 赤琦
-date: "2018-04-05"
-description: ""
-original: ""
+date: 2018-04-05
+description:
+original:
 tags:
-- 清明
+  - 清明
 title: 再清明，似「野僧」
+category:
+  - thinking
 ---
 
 > 清明 - 北宋王禹偁

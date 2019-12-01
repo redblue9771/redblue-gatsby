@@ -1,12 +1,14 @@
 ---
 author: 赤琦
-date: "1997-06-30"
-original: ""
-category:
+date: 1997-06-30
+original:
+series:
   - 低等动物
 tags:
   - 赤琦
 title: I'm「赤琦」
+category:
+  - thinking
 ---
 
 ## 你好，中国

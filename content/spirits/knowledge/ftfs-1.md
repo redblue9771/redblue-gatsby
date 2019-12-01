@@ -1,10 +1,9 @@
 ---
 author: 韩昊
-date: "2018-03-30"
+date: 2018-03-30
 description: 知乎：Heinrich；微 博：@花生油工人；知乎专栏：与时间无关的故事；谨以此文献给大连海事大学的吴楠老师，柳晓鸣老师，王新年老师以及张晶泊老师。
-mathjax: true
 original: https://zhuanlan.zhihu.com/p/19763358
-category:
+series:
   - 学识经典
 tags:
   - 傅里叶
@@ -12,6 +11,8 @@ tags:
   - 通信
   - 物联网
 title: 快速理解「傅里叶」分析
+category:
+  - konwledge
 ---
 
 > 知 乎：Heinrich；微 博：@花生油工人；知乎专栏：与时间无关的故事；谨以此文献给大连海事大学的吴楠老师，柳晓鸣老师，王新年老师以及张晶泊老师。

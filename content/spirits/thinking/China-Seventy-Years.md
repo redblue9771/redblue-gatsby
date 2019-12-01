@@ -1,8 +1,10 @@
 ---
 author: 赤琦
-date: "2019-10-04T19:16:29Z"
+date: 2019-10-04T19:16:29Z
 draft: true
 title: 2019 年国庆
+category:
+  - thinking
 ---
 
 #

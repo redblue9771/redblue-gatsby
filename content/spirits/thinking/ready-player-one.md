@@ -1,12 +1,14 @@
 ---
 author: 赤琦
-date: "2018-04-07"
+date: 2018-04-07
 description: 上周看的电影，这个拖延症没谁了，还堆了一些想写的草稿……其实这也只是个草稿，还是发出来吧省得惦记又拖延假装是最终版
-original: ""
+original:
 tags:
-- 杂感
-- 未来
+  - 杂感
+  - 未来
 title: 「Z世代」规则是人类的救赎
+category:
+  - thinking
 ---
 
 ## 头号玩家

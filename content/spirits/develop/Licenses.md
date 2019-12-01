@@ -1,10 +1,12 @@
 ---
+title: 如何选择「Open License」？
 author: 赤琦
 date: 2018-11-26 00:00:00 +0000
 description: 一份开源协议指北
 draft: true
-original: ""
-title: 如何选择「Open License」？
+original:
+category:
+  - develop
 ---
 
 ## 何谓「开源」

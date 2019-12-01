@@ -1,14 +1,15 @@
 ---
 author: 赤琦
-date: "2018-11-13"
-description: 包括怎么在 Windows 中使用 Linux、怎么设置 WSL/Bash/Linux shell 为 VScode 的默认终端、Code
-  Runner 使用 WSL/Bash/Linux shell
-original: ""
+date: 2018-11-13
+description: 包括怎么在 Windows 中使用 Linux、怎么设置 WSL/Bash/Linux shell 为 VScode 的默认终端、Code Runner 使用 WSL/Bash/Linux shell
+original:
 tags:
-- 开发环境
-- Linux
-- WSL
+  - 开发环境
+  - Linux
+  - WSL
 title: 「WSL」Windows 下的 Linux 开发环境
+category:
+  - develop
 ---
 
 # Windows 下的 Linux 开发神器

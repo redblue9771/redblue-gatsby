@@ -1,12 +1,14 @@
 ---
 author: 蛋壳花生
 date: 2018-11-24 00:00:00 +0800
-description: ""
+description:
 original: https://zhuanlan.zhihu.com/p/42904743
 tags:
-- 管理
-- 扁平化
+  - 管理
+  - 扁平化
 title: 团队的从「去中心化」，到扁平化组织的未来
+category:
+  - thinking
 ---
 
 ## 等级带来的信息抑制

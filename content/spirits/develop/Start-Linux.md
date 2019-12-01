@@ -1,12 +1,14 @@
 ---
 author: 赤琦
-date: "2019-01-06"
-description: ""
-original: ""
+date: 2019-01-06
+description:
+original:
 tags:
-- Linux
-- 嵌入式
+  - Linux
+  - 嵌入式
 title: 嵌入式「Linux」基础
+category:
+  - develop
 ---
 
 ## 基本概念

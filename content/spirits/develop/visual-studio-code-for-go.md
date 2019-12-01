@@ -1,12 +1,14 @@
 ---
 author: 赤琦
-date: "2019-04-12T19:58:31+08:00"
-original: ""
+date: 2019-04-12T19:58:31+08:00
+original:
 tags:
-- Golang
-- VS Code
-- 开发环境
+  - Golang
+  - VS Code
+  - 开发环境
 title: Visual Studio Code 中的「Go配置」
+category:
+  - develop
 ---
 
 ## Visual Studio Code 提示错误

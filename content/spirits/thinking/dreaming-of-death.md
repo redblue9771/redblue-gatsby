@@ -1,12 +1,14 @@
 ---
 author: 赤琦
-date: "2015-06-03"
-description: ""
+date: 2015-06-03
+description:
 draft: true
-original: ""
+original:
 tags:
-- 杂感
+  - 杂感
 title: 亡「魇」
+category:
+  - thinking
 ---
 
 我爱很多人，但是爱我的不多，不过我天生有一个爱我的妈妈，却习以为常，爱得不温不火，成了一抹灵曦。
