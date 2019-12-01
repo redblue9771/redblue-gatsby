@@ -5873,7 +5873,7 @@ gatsby-plugin-tags@latest:
     lodash "^4.17.15"
     slug "^1.1.0"
 
-gatsby-plugin-transition-link@^1.16.2:
+gatsby-plugin-transition-link@latest:
   version "1.16.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-transition-link/-/gatsby-plugin-transition-link-1.16.2.tgz#8a4d320604793464db2efeb10f07202460d3ce2c"
   integrity sha512-cAOkxXrjC/EaIagrOD+gW9nIfNO7Ai1Fa2Gd3Q2r79ytNIPARbu38WTOsUnHZ0dlz8acSR1NquyPl3GlcB57IA==
@@ -6558,7 +6558,7 @@ graphql-request@^1.5.0:
   dependencies:
     cross-fetch "2.2.2"
 
-graphql-tag@^2.10.1, graphql-tag@^2.4.2:
+graphql-tag@^2.4.2, graphql-tag@latest:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
   integrity sha512-jApXqWBzNXQ8jYa/HLkZJaVw9jgwNqZkywa2zfFn16Iv1Zb7ELNHkJaXHR7Quvd5SIGsy6Ny7SUKATgnu05uEg==

@@ -1,7 +1,7 @@
 {
   "name": "redblue-gatsby",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "@apollo/react-hooks": "latest",
     "@mdi/js": "latest",
@@ -22,7 +22,7 @@
     "gatsby-plugin-scroll-reveal": "latest",
     "gatsby-plugin-sharp": "latest",
     "gatsby-plugin-tags": "latest",
-    "gatsby-plugin-transition-link": "^1.16.2",
+    "gatsby-plugin-transition-link": "latest",
     "gatsby-remark-autolink-headers": "latest",
     "gatsby-remark-copy-linked-files": "latest",
     "gatsby-remark-images": "latest",
@@ -33,7 +33,7 @@
     "gatsby-transformer-javascript-frontmatter": "latest",
     "gatsby-transformer-remark": "latest",
     "gatsby-transformer-sharp": "latest",
-    "graphql-tag": "^2.10.1",
+    "graphql-tag": "latest",
     "isomorphic-fetch": "latest",
     "katex": "latest",
     "line-awesome": "latest",
@@ -62,9 +62,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-merge": "lint-staged",
-      "pre-rebase": "lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
