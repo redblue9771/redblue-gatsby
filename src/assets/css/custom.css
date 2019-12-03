@@ -434,6 +434,10 @@ p code {
   overflow: hidden;
 }
 
+.tl-wrapper {
+  overflow: hidden;
+}
+
 .container-fluid,
 .container,
 .col,

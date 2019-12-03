@@ -1,10 +1,10 @@
 import React from 'react'
-import '../assets/css/timeline.min.css'
+// import '../assets/css/timeline.min.css'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
-import { PageState } from '../components/MainLayout'
+import { PageState } from '../common/MainLayout'
 
 const GITHUB_QUERY = gql`
   {

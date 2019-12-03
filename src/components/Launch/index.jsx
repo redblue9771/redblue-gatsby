@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import gql from 'graphql-tag'
 
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
 import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-import { PageState } from '../components/MainLayout'
-import SEO from '../components/SEO'
 
-import Carousel from '../components/Carousel'
+import { PageState } from '../common/MainLayout'
+import SEO from '../common/SEO'
 
-import GitHub from '../assets/img/undraw_developer_activity.svg'
+import Carousel from '../common/Carousel'
+
+import GitHub from '../../assets/img/undraw_developer_activity.svg'
 
 const GITHUB_QUERY = gql`
   {
@@ -25,30 +26,6 @@ const GITHUB_QUERY = gql`
           name
           description
           url
-        }
-      }
-    }
-  }
-`
-
-export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(
-      filter: { fields: { draft: { ne: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 5
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
         }
       }
     }

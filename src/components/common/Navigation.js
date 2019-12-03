@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-plugin-transition-link'
-import routes from '../utils/routes'
+import routes from '../../utils/routes'
 
 const renderRouter = routes.map(({ title, path, external }) =>
   external ? (

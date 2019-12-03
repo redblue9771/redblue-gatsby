@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import carousel from '../data/carousel.json'
+import carousel from '../../data/carousel.json'
 
 export default () => {
   return (

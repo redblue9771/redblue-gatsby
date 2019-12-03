@@ -17,10 +17,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const numPages = Math.ceil(pages / perPage)
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? pathname : `${pathname}/${i + 1}`,
+        path: i === 0 ? pathname : `${pathname}${i + 1}`,
         component,
         context: {
-          list: Array.from(list),
+          slug: i === 0 ? pathname : `${pathname}${i + 1}`,
+          list,
           currItem,
           type,
           limit: perPage,
@@ -81,7 +82,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const spiritsSingle = path.resolve(`./src/templates/spirits-single.js`)
+  const SPIRITS_SINGLE = path.resolve(`./src/pages/custom/spirits/single.js`)
+  const SPIRITS_SECTION = path.resolve(`./src/pages/custom/spirits/section.js`)
+  const SPIRITS_LIST = path.resolve(`./src/pages/custom/spirits/list.js`)
 
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
@@ -100,7 +103,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     createPage({
       path: fields.slug,
-      component: spiritsSingle,
+      component: SPIRITS_SINGLE,
       context: {
         slug: fields.slug,
         previous,
@@ -112,41 +115,61 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   createPagination(
     posts.length,
     10,
-    '/spirits',
-    path.resolve('./src/templates/spirits.js')
+    '/spirits/',
+    SPIRITS_LIST,
+    categories.keys(),
+    categories.keys()
   )
 
   categories.forEach((val, key, map) => {
     createPagination(
       val,
       10,
-      `/spirits/${key}`,
-      path.resolve('./src/templates/spirits.js'),
-      map.keys(),
+      `/spirits/${key}/`,
+      SPIRITS_LIST,
+      [...map.keys()],
       key,
       'categories'
     )
+  })
+
+  createPage({
+    path: `/spirits/tags/`,
+    component: SPIRITS_SECTION,
+    context: {
+      slug: `/spirits/tags/`,
+      list: [...tags.keys()],
+    },
   })
 
   tags.forEach((val, key, map) => {
     createPagination(
       val,
       10,
-      `/spirits/tags/${key}`,
-      path.resolve('./src/templates/spirits.js'),
-      map.keys(),
+      `/spirits/tags/${key}/`,
+      SPIRITS_LIST,
+      [...map.keys()],
       key,
-      'tags'
+      'tag'
     )
+  })
+
+  createPage({
+    path: `/spirits/series/`,
+    component: SPIRITS_SECTION,
+    context: {
+      slug: `/spirits/tags/`,
+      list: [...series.keys()],
+    },
   })
 
   series.forEach((val, key, map) => {
     createPagination(
       val,
       10,
-      `/spirits/series/${key}`,
-      path.resolve('./src/templates/spirits.js'),
-      map.keys(),
+      `/spirits/series/${key}/`,
+      SPIRITS_LIST,
+      [...map.keys()],
       key,
       'series'
     )

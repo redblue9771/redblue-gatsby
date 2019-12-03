@@ -1,7 +1,5 @@
 require('dotenv').config()
 
-console.log(process.env.GATSBY_GITHUB_TOKEN)
-
 module.exports = {
   siteMetadata: {
     title: `RedBlue | 赤琦`,
@@ -22,7 +20,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/src/pages/general`,
       },
     },
     {
@@ -53,7 +51,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-transition-link`,
       options: {
-        layout: require.resolve(`./src/components/MainLayout`),
+        layout: require.resolve(`./src/components/common/MainLayout`),
       },
     },
     `gatsby-transformer-sharp`,

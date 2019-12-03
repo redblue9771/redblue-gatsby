@@ -1,8 +1,8 @@
 import { graphql, Link } from 'gatsby'
 import 'katex/dist/katex.min.css'
 import React from 'react'
-import '../assets/css/highlighting.css'
-import { PageState } from '../components/MainLayout'
+import '../../assets/css/highlighting.css'
+import { PageState } from '../common/MainLayout'
 
 export default ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -174,29 +174,3 @@ export default ({ data, pageContext }) => {
   //   </MainLayout>
   // )
 }
-
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        original
-        author
-      }
-      fields {
-        slug
-      }
-    }
-  }
-`

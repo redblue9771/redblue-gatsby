@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { PageState } from '../components/MainLayout'
-import '../assets/css/timeline.min.css'
-import GitHub from '../assets/img/undraw_developer_activity.svg'
+import { PageState } from '../common/MainLayout'
+// import '../assets/css/timeline.min.css'
+import GitHub from '../../assets/img/undraw_developer_activity.svg'
+import TimeLine from '../common/TimeLine/Geometric'
+import translate from '../../utils/translate'
 
 export default ({
+  location,
   data: {
     allMarkdownRemark: {
       edges: posts,
@@ -42,7 +45,9 @@ export default ({
           <li className="page-item" key={`page${pageIndex}`}>
             <Link
               className="page-link"
-              to={`/spirits/${pageIndex === 1 ? '' : pageIndex}`}
+              to={`${location.pathname.replace(/\/\d+/, '')}/${
+                pageIndex === 1 ? '' : pageIndex
+              }`}
             >
               {pageIndex}
             </Link>
@@ -57,74 +62,59 @@ export default ({
     <div
       className="position-relative"
       id="blog-section"
-      style={{
-        background: `url(${GitHub})`,
-        backgroundSize: 'contain',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundOrigin: 'content-box',
-        backgroundAttachment: 'fixed',
-      }}
+      // style={{
+      //   background: `url(${GitHub})`,
+      //   backgroundSize: 'contain',
+      //   backgroundPosition: 'center',
+      //   backgroundRepeat: 'no-repeat',
+      //   backgroundOrigin: 'content-box',
+      //   backgroundAttachment: 'fixed',
+      // }}
     >
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
           <li>分类：</li>
-          <li className="breadcrumb-item">
-            <a href="{{.Permalink }}" />
-          </li>
+          {pageContext.list.map((item) => (
+            <li className="breadcrumb-item" key="item">
+              {pageContext.currItem === item &&
+              location.pathname.includes(pageContext.currItem) ? (
+                translate[item]
+              ) : (
+                <Link to={`/${location.pathname.split('/')[1]}/${item}/`}>
+                  {translate[item]}
+                </Link>
+              )}
+            </li>
+          ))}
         </ul>
         <ul className="breadcrumb justify-content-end">
           <li>其他分类：</li>
           <li className="breadcrumb-item">
-            <a href="/tags/" rel="bookmark">
+            <Link to="/spirits/tags/" rel="bookmark">
               按标签
-            </a>
+            </Link>
           </li>
           <li className="breadcrumb-item">
-            <a href="/series/" rel="bookmark">
+            <Link to="/spirits/series/" rel="bookmark">
               按系列
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
       <div className="row">
-        <div className="timeline timeline-line-dotted">
+        <TimeLine.container>
           {posts.map(({ node }) => (
-            <React.Fragment key={node.fields.slug}>
-              <span className="timeline-label">
-                <span className="label label-info">
-                  {node.frontmatter.date || new Date().toLocaleDateString()}
-                </span>
-              </span>
-              <div className="timeline-item">
-                <div className="timeline-point timeline-point-info">
-                  <i className="fa fa-circle" />
-                </div>
-                <div data-sal="slide-up">
-                  <Link to={node.fields.slug} title={node.frontmatter.title}>
-                    <div className="timeline-heading">
-                      <h5>
-                        <strong>
-                          {node.frontmatter.title || node.fields.slug}
-                        </strong>
-                      </h5>
-                    </div>
-                    <div className="timeline-body">
-                      <p>{node.frontmatter.description || node.excerpt}</p>
-                    </div>
-                    <div className="timeline-footer">
-                      <p className="text-right">
-                        <i className="fa fa-pencil" />
-                        &nbsp;
-                        {node.frontmatter.author}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </React.Fragment>
+            <TimeLine.item
+              date={`${node.frontmatter.author} - ${node.frontmatter.date ||
+                new Date().toLocaleDateString()}`}
+              title={node.frontmatter.title || node.fields.slug}
+              description={node.frontmatter.description || node.excerpt}
+              to={node.fields.slug}
+              key={node.fields.slug}
+              component={Link}
+            />
           ))}
-        </div>
+        </TimeLine.container>
       </div>
       {pageCount !== 1 && (
         <ul className="pagination">
@@ -141,7 +131,7 @@ export default ({
               <Link
                 className="page-link"
                 aria-label="Last"
-                to={`/spirits/${pageCount}`}
+                to={`${location.pathname.replace(/\/\d+/, '')}/${pageCount}`}
               >
                 <span aria-hidden="true">&raquo;</span>
               </Link>
@@ -154,14 +144,12 @@ export default ({
 }
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+  query($currItem: String, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { fields: { draft: { ne: true } } }
+      filter: {
+        fields: { draft: { ne: true } }
+        frontmatter: { category: { in: [$currItem] } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
       skip: $skip
       limit: $limit

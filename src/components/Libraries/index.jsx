@@ -1,6 +1,6 @@
 import React from 'react'
-import { PageState } from '../components/MainLayout'
-import libraries from '../data/libraries.json'
+import { PageState } from '../common/MainLayout'
+import libraries from '../../data/libraries.json'
 
 export default ({ data }) => {
   const { setCurrPageState } = React.useContext(PageState)

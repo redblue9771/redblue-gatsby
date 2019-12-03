@@ -1,7 +1,7 @@
 import React from 'react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../assets/css/custom.css'
+import '../../assets/css/custom.css'
 import 'line-awesome/dist/line-awesome/css/line-awesome.min.css'
 
 import { Helmet } from 'react-helmet'
@@ -11,8 +11,8 @@ import Navigation from './Navigation'
 import Header from './Header'
 import Footer from './Footer'
 
-import { useClientRect } from '../utils/hooks'
-import client from '../utils/client'
+import { useClientRect } from '../../utils/hooks'
+import client from '../../utils/client'
 
 const defaultPageState = {
   title: '',
