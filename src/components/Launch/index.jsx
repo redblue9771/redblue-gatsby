@@ -113,8 +113,8 @@ export default ({
               {(loading || error) && (
                 <dd>
                   <p>
-                    <Icon path={mdiLoading} spin={1} size={1} />
-                    `从 github.com/redblue9771 拉取中…`
+                    <Icon path={mdiLoading} spin={1} size={1} />从
+                    github.com/redblue9771 拉取中…
                   </p>
                 </dd>
               )}
