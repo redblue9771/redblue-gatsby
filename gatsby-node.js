@@ -11,19 +11,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     pathname,
     component,
     list = [],
-    currItem = '',
-    type = ''
+    currItem = ''
   ) => {
     const numPages = Math.ceil(pages / perPage)
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? pathname : `${pathname}${i + 1}`,
+        path: i ? `${pathname}${i + 1}` : pathname,
         component,
         context: {
-          slug: i === 0 ? pathname : `${pathname}${i + 1}`,
+          slug: i ? `${pathname}${i + 1}` : pathname,
           list,
           currItem,
-          type,
           limit: perPage,
           skip: i * perPage,
           numPages,
@@ -82,10 +80,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const SPIRITS_SINGLE = path.resolve(`./src/pages/custom/spirits/single.js`)
-  const SPIRITS_SECTION = path.resolve(`./src/pages/custom/spirits/section.js`)
-  const SPIRITS_LIST = path.resolve(`./src/pages/custom/spirits/list.js`)
-
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
 
@@ -103,7 +97,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     createPage({
       path: fields.slug,
-      component: SPIRITS_SINGLE,
+      component: path.resolve(`./src/templates/spirits/article.js`),
       context: {
         slug: fields.slug,
         previous,
@@ -116,9 +110,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     posts.length,
     10,
     '/spirits/',
-    SPIRITS_LIST,
-    categories.keys(),
-    categories.keys()
+    path.resolve(`./src/templates/spirits/list.js`),
+    [...categories]
   )
 
   categories.forEach((val, key, map) => {
@@ -126,19 +119,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       val,
       10,
       `/spirits/${key}/`,
-      SPIRITS_LIST,
-      [...map.keys()],
-      key,
-      'categories'
+      path.resolve(`./src/templates/spirits/category.js`),
+      [...map],
+      key
     )
   })
 
   createPage({
     path: `/spirits/tags/`,
-    component: SPIRITS_SECTION,
+    component: path.resolve(`./src/templates/spirits/tag.index.js`),
     context: {
       slug: `/spirits/tags/`,
-      list: [...tags.keys()],
+      list: [...tags],
     },
   })
 
@@ -147,19 +139,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       val,
       10,
       `/spirits/tags/${key}/`,
-      SPIRITS_LIST,
-      [...map.keys()],
-      key,
-      'tag'
+      path.resolve(`./src/templates/spirits/tag.js`),
+      [...map],
+      key
     )
   })
 
   createPage({
     path: `/spirits/series/`,
-    component: SPIRITS_SECTION,
+    component: path.resolve(`./src/templates/spirits/series.index.js`),
     context: {
-      slug: `/spirits/tags/`,
-      list: [...series.keys()],
+      slug: `/spirits/series/`,
+      list: [...series],
     },
   })
 
@@ -168,10 +159,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       val,
       10,
       `/spirits/series/${key}/`,
-      SPIRITS_LIST,
-      [...map.keys()],
-      key,
-      'series'
+      path.resolve(`./src/templates/spirits/series.js`),
+      [...map],
+      key
     )
   })
 }

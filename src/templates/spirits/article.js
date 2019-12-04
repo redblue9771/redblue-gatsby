@@ -1,8 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import Spirits from '../../../components/Spirits'
-
-export default (props) => <Spirits {...props} />
+import Spirits from '../../components/Spirits'
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -22,3 +20,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default (props) => <Spirits {...props} />

@@ -40,7 +40,7 @@ export default ({
   const { setCurrPageState } = React.useContext(PageState)
   const { loading, error, data } = useQuery(GITHUB_QUERY)
 
-  console.log(GitHub)
+  console.log(error)
 
   React.useEffect(() => {
     setCurrPageState({

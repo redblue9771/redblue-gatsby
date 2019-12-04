@@ -18,6 +18,7 @@
     "gatsby-plugin-feed": "latest",
     "gatsby-plugin-layout": "latest",
     "gatsby-plugin-manifest": "latest",
+    "gatsby-plugin-page-creator": "^2.1.33",
     "gatsby-plugin-react-helmet": "latest",
     "gatsby-plugin-scroll-reveal": "latest",
     "gatsby-plugin-sharp": "latest",

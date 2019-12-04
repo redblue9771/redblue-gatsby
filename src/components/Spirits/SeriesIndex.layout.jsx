@@ -59,124 +59,30 @@ export default ({
   }
 
   return (
-    <div
-      className="position-relative"
-      id="blog-section"
-      // style={{
-      //   background: `url(${GitHub})`,
-      //   backgroundSize: 'contain',
-      //   backgroundPosition: 'center',
-      //   backgroundRepeat: 'no-repeat',
-      //   backgroundOrigin: 'content-box',
-      //   backgroundAttachment: 'fixed',
-      // }}
-    >
-      <nav aria-label="breadcrumb">
-        <ul className="breadcrumb justify-content-end">
-          <li>分类：</li>
-          {pageContext.list.map((item) => (
-            <li className="breadcrumb-item" key="item">
-              {pageContext.currItem === item &&
-              location.pathname.includes(pageContext.currItem) ? (
-                translate[item]
-              ) : (
-                <Link to={`/${location.pathname.split('/')[1]}/${item}/`}>
-                  {translate[item]}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
-        <ul className="breadcrumb justify-content-end">
-          <li>其他分类：</li>
-          <li className="breadcrumb-item">
-            <Link to="/spirits/tags/" rel="bookmark">
-              按标签
+    <section className="article-series position-relative">
+      <div>
+        {pageContext.list.map(([key, value]) => (
+          <article
+            key={key}
+            className="mx-3 mb-3 shadow"
+            style={{
+              background: `url(/img/series/books.jpg)`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+            }}
+          >
+            <Link
+              to={`${location.pathname}/${key}/`}
+              className="d-block w-100 h-100"
+              rel="glossary"
+            >
+              <h4 className="text-white mx-3">《{key}》</h4>
             </Link>
-          </li>
-          <li className="breadcrumb-item">
-            <Link to="/spirits/series/" rel="bookmark">
-              按系列
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <div className="row">
-        <TimeLine.container>
-          {posts.map(({ node }) => (
-            <TimeLine.item
-              date={`${node.frontmatter.author} - ${node.frontmatter.date ||
-                new Date().toLocaleDateString()}`}
-              title={node.frontmatter.title || node.fields.slug}
-              description={node.frontmatter.description || node.excerpt}
-              to={node.fields.slug}
-              key={node.fields.slug}
-              component={Link}
-            />
-          ))}
-        </TimeLine.container>
+          </article>
+        ))}
       </div>
-      {pageCount !== 1 && (
-        <ul className="pagination">
-          {hasPreviousPage && (
-            <li className="page-item">
-              <Link className="page-link" aria-label="First" to="/spirits/">
-                <span aria-hidden="true">&laquo;</span>
-              </Link>
-            </li>
-          )}
-          {renderPagination()}
-          {hasNextPage && (
-            <li className="page-item">
-              <Link
-                className="page-link"
-                aria-label="Last"
-                to={`${location.pathname.replace(/\/\d+/, '')}/${pageCount}`}
-              >
-                <span aria-hidden="true">&raquo;</span>
-              </Link>
-            </li>
-          )}
-        </ul>
-      )}
-    </div>
+      <span className="shade-left" />
+      <span className="shade-right" />
+    </section>
   )
 }
-
-export const pageQuery = graphql`
-  query($currItem: String, $skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      filter: {
-        fields: { draft: { ne: true } }
-        frontmatter: { category: { in: [$currItem] } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-      skip: $skip
-      limit: $limit
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            category
-            tags
-            series
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            author
-          }
-        }
-      }
-      pageInfo {
-        currentPage
-        pageCount
-        hasPreviousPage
-        hasNextPage
-      }
-    }
-  }
-`

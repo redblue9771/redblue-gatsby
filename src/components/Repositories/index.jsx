@@ -1,5 +1,5 @@
 import React from 'react'
-// import '../assets/css/timeline.min.css'
+// import '../../assets/css/timeline.min.css'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Icon from '@mdi/react'

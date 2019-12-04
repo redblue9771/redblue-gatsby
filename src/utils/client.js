@@ -8,5 +8,3 @@ export default new ApolloClient({
   },
   fetch,
 })
-
-console.log(process.env.GATSBY_GITHUB_TOKEN)

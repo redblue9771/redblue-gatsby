@@ -1,4 +1,5 @@
 .main-timeline {
+  width: 100%;
   overflow: hidden;
   position: relative;
   padding: 60px 0;

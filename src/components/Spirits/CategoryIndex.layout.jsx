@@ -74,14 +74,14 @@ export default ({
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
           <li>分类：</li>
-          {pageContext.list.map((item) => (
+          {pageContext.list.map(([key, value]) => (
             <li className="breadcrumb-item" key="item">
-              {pageContext.currItem === item &&
+              {pageContext.currItem === key &&
               location.pathname.includes(pageContext.currItem) ? (
-                translate[item]
+                `${translate[key]}(${value})`
               ) : (
-                <Link to={`/${location.pathname.split('/')[1]}/${item}/`}>
-                  {translate[item]}
+                <Link to={`/${location.pathname.split('/')[1]}/${key}/`}>
+                  {`${translate[key]}(${value})`}
                 </Link>
               )}
             </li>
@@ -142,41 +142,3 @@ export default ({
     </div>
   )
 }
-
-export const pageQuery = graphql`
-  query($currItem: String, $skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      filter: {
-        fields: { draft: { ne: true } }
-        frontmatter: { category: { in: [$currItem] } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-      skip: $skip
-      limit: $limit
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            category
-            tags
-            series
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            author
-          }
-        }
-      }
-      pageInfo {
-        currentPage
-        pageCount
-        hasPreviousPage
-        hasNextPage
-      }
-    }
-  }
-`
