@@ -57,6 +57,7 @@ export default ({ children }) => {
         site {
           siteMetadata {
             title
+            description
           }
         }
       }
@@ -67,7 +68,7 @@ export default ({ children }) => {
     <React.Fragment>
       <Helmet>
         <title>
-          {`${currPageState.title} - ${
+          {`${currPageState.title || siteMetadata.title} - ${
             currPageState.layout === 'home'
               ? '其实你知的我是那面'
               : siteMetadata.title
@@ -82,7 +83,7 @@ export default ({ children }) => {
       <Header {...currPageState} />
       <div
         className={`container-fluid clearfix ${
-          currPageState.layout === 'home' ? 'main-area-fluid' : 'main-area'
+          currPageState.layout !== 'home' ? 'main-area' : 'main-area-fluid'
         }`}
         ref={ref}
       >

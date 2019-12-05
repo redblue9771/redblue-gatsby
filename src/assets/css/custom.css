@@ -435,7 +435,7 @@ p code {
 }
 
 .tl-wrapper {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .container-fluid,

@@ -1,9 +1,6 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link/AniLink'
 import gql from 'graphql-tag'
-
-import Icon from '@mdi/react'
-import { mdiLoading } from '@mdi/js'
 import { useQuery } from '@apollo/react-hooks'
 
 import { PageState } from '../common/MainLayout'
@@ -39,8 +36,6 @@ export default ({
 }) => {
   const { setCurrPageState } = React.useContext(PageState)
   const { loading, error, data } = useQuery(GITHUB_QUERY)
-
-  console.log(error)
 
   React.useEffect(() => {
     setCurrPageState({
@@ -79,6 +74,7 @@ export default ({
                 return (
                   <dd key={node.fields.slug}>
                     <Link
+                      fade
                       className="d-block text-truncate"
                       to={node.fields.slug}
                     >
@@ -113,7 +109,7 @@ export default ({
               {(loading || error) && (
                 <dd>
                   <p>
-                    <Icon path={mdiLoading} spin={1} size={1} />从
+                    <i className="la la-free-code-camp" />从
                     github.com/redblue9771 拉取中…
                   </p>
                 </dd>

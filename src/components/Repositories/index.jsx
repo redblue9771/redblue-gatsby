@@ -1,9 +1,7 @@
 import React from 'react'
-// import '../../assets/css/timeline.min.css'
+import '../../assets/css/timeline.min.css'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import Icon from '@mdi/react'
-import { mdiLoading } from '@mdi/js'
 import { PageState } from '../common/MainLayout'
 
 const GITHUB_QUERY = gql`
@@ -53,9 +51,6 @@ const GITHUB_QUERY = gql`
 export default () => {
   const { setCurrPageState } = React.useContext(PageState)
   const { loading, error, data } = useQuery(GITHUB_QUERY)
-  if (data) {
-    console.log(data.viewer.repositories.nodes)
-  }
 
   React.useEffect(() => {
     setCurrPageState({
@@ -75,7 +70,7 @@ export default () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <i className="fa fa-tags" /> Repositories
+            <i className="lab lab-tags" /> Repositories
           </a>
         </h3>
         <div className="timeline timeline-single-column" id="github-list">
@@ -96,7 +91,7 @@ export default () => {
               }) => (
                 <div className="timeline-item" key={url}>
                   <div className="timeline-point timeline-point-info">
-                    <i className="fa fa-star" />
+                    <i className="la la-flask" />
                   </div>
                   <div className="timeline-event timeline-event-info">
                     <a
@@ -113,22 +108,22 @@ export default () => {
                       <div className="timeline-body">
                         <p>{description}</p>
                         <small>
-                          <i className="fa fa-code">
+                          <i className="la la-code">
                             {primaryLanguage ? primaryLanguage.name : ''}
                           </i>
                           &nbsp;&nbsp;&nbsp;
-                          <i className="fa fa-star-half-full">{starCount} </i>
+                          <i className="las la-star"> {starCount}</i>
                           &nbsp;&nbsp;&nbsp;
-                          <i className="fa fa-code-fork"> {forkCount}</i>
+                          <i className="la la-code-branch"> {forkCount}</i>
                           &nbsp;&nbsp;&nbsp;
-                          <i className="fa fa-balance-scale">
+                          <i className="la la-balance-scale">
                             {licenseInfo ? licenseInfo.name : ''}
                           </i>
                         </small>
                       </div>
                       <div className="timeline-footer">
                         <p className="text-right text-truncate">
-                          <i className="fa fa-terminal" />
+                          <i className="la la-terminal" />
                           <small>
                             最近一次更新：
                             {new Date(updatedAt).toLocaleDateString()}
@@ -149,14 +144,14 @@ export default () => {
                 <div className="timeline-heading">
                   <h5>
                     <strong>
-                      <Icon path={mdiLoading} spin={1} size={1} />从
+                      <i className="la la-free-code-camp" />从
                       github.com/redblue9771 拉取中…
                     </strong>
                   </h5>
                 </div>
                 <div className="timeline-body">
                   <p>
-                    <Icon path={mdiLoading} spin={1} size={1} />从
+                    <i className="la la-free-code-camp" />从
                     github.com/redblue9771 拉取中…
                   </p>
                 </div>

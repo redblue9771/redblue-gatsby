@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link/AniLink'
 import { PageState } from '../common/MainLayout'
 // import '../assets/css/timeline.min.css'
 import GitHub from '../../assets/img/undraw_developer_activity.svg'
@@ -17,7 +17,6 @@ export default ({
   pageContext,
 }) => {
   const { setCurrPageState } = React.useContext(PageState)
-  console.log(pageContext)
   React.useEffect(() => {
     setCurrPageState({
       title: '博文',
@@ -44,6 +43,7 @@ export default ({
         template.push(
           <li className="page-item" key={`page${pageIndex}`}>
             <Link
+              fade
               className="page-link"
               to={`${location.pathname.replace(/\/\d+/, '')}/${
                 pageIndex === 1 ? '' : pageIndex
@@ -74,13 +74,13 @@ export default ({
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
           <li>分类：</li>
-          {pageContext.list.map(([key, value]) => (
-            <li className="breadcrumb-item" key="item">
+          {pageContext.list.map(([key, value], index) => (
+            <li className="breadcrumb-item" key={index}>
               {pageContext.currItem === key &&
               location.pathname.includes(pageContext.currItem) ? (
                 `${translate[key]}(${value})`
               ) : (
-                <Link to={`/${location.pathname.split('/')[1]}/${key}/`}>
+                <Link fade to={`/${location.pathname.split('/')[1]}/${key}/`}>
                   {`${translate[key]}(${value})`}
                 </Link>
               )}
@@ -90,12 +90,12 @@ export default ({
         <ul className="breadcrumb justify-content-end">
           <li>其他分类：</li>
           <li className="breadcrumb-item">
-            <Link to="/spirits/tags/" rel="bookmark">
+            <Link fade to="/spirits/tags/" rel="bookmark">
               按标签
             </Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to="/spirits/series/" rel="bookmark">
+            <Link fade to="/spirits/series/" rel="bookmark">
               按系列
             </Link>
           </li>
@@ -112,6 +112,8 @@ export default ({
               to={node.fields.slug}
               key={node.fields.slug}
               component={Link}
+              fade
+              data-sal="slide-down"
             />
           ))}
         </TimeLine.container>
@@ -120,7 +122,12 @@ export default ({
         <ul className="pagination">
           {hasPreviousPage && (
             <li className="page-item">
-              <Link className="page-link" aria-label="First" to="/spirits/">
+              <Link
+                fade
+                className="page-link"
+                aria-label="First"
+                to="/spirits/"
+              >
                 <span aria-hidden="true">&laquo;</span>
               </Link>
             </li>
@@ -129,6 +136,7 @@ export default ({
           {hasNextPage && (
             <li className="page-item">
               <Link
+                fade
                 className="page-link"
                 aria-label="Last"
                 to={`${location.pathname.replace(/\/\d+/, '')}/${pageCount}`}

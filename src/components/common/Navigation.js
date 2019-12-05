@@ -1,60 +1,60 @@
 import React from 'react'
-import Link from 'gatsby-plugin-transition-link'
+import Link from 'gatsby-plugin-transition-link/AniLink'
+import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 import routes from '../../utils/routes'
 
 const renderRouter = routes.map(({ title, path, external }) =>
   external ? (
-    <a
+    <Nav.Link
       key={path}
-      className="nav-item nav-link text-white text-nowrap"
       href={path}
       target="_blank"
       rel="noopener noreferrer"
+      className="text-white text-nowrap"
     >
       &nbsp;/ {title.cn} /&nbsp;
-    </a>
+    </Nav.Link>
   ) : (
-    <Link
+    <Nav.Link
+      as={Link}
+      fade
       key={path}
-      className="nav-item nav-link text-white text-nowrap"
       to={path || '/404'}
+      className="text-white text-nowrap"
     >
       &nbsp;/ {title.cn} /&nbsp;
-    </Link>
+    </Nav.Link>
   )
 )
 
 export default ({ title = 'RedBlue | 赤琦', styleName = '' }) => {
   return (
-    <div id="main-nav" className={`container-fluid fixed-top ${styleName}`}>
-      <nav
-        data-sal="slide-down"
-        className="navbar text-white d-flex flex-nowrap navbar-expand-md mx-auto"
-      >
-        <Link
-          className="navbar-brand flex-grow-1 text-truncate text-white"
+    <Container fluid id="main-nav" className={`fixed-top ${styleName}`}>
+      <Navbar className="flex-nowrap mx-auto" expand="md" data-sal="slide-down">
+        <Navbar.Brand
+          as={Link}
+          fade
           to="/"
           id="main-title"
+          className="flex-grow-1 text-truncate text-white"
         >
           {title}
-        </Link>
-        <a
-          className="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
+        </Navbar.Brand>
+
+        <Navbar.Toggle
+          as="a"
           aria-controls="navbarNavAltMarkup"
-          aria-expanded="true"
-          aria-label="Toggle navigation"
+          className="border-0 text-white"
         >
           <i className="lab la-gitter" />
-        </a>
-        <div className="collapse navbar-collapse">
-          <div className="navbar-nav nav-justified ml-auto">{renderRouter}</div>
-        </div>
-      </nav>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav nav-justified ml-auto">{renderRouter}</div>
-      </div>
-    </div>
+        </Navbar.Toggle>
+
+        <Navbar.Collapse>
+          <Nav className="nav-justified ml-auto">{renderRouter}</Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </Container>
   )
 }

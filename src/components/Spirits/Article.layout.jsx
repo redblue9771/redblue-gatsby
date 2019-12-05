@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link/AniLink'
 import 'katex/dist/katex.min.css'
 import React from 'react'
 import '../../assets/css/highlighting.css'
@@ -31,13 +31,13 @@ export default ({ data, pageContext }) => {
           </div>
 
           {previous && (
-            <Link to={previous.fields.slug} rel="prev" className="d-block">
+            <Link fade to={previous.fields.slug} rel="prev" className="d-block">
               上一篇：{previous.frontmatter.title}
             </Link>
           )}
 
           {next && (
-            <Link to={next.fields.slug} rel="next" className="d-block">
+            <Link fade to={next.fields.slug} rel="next" className="d-block">
               下一篇：{next.frontmatter.title}
             </Link>
           )}
@@ -123,7 +123,7 @@ export default ({ data, pageContext }) => {
   //             <card className="my-4">
   //               <card>Filed Under</card>
   //               <card>
-  //                 <Link to={`/category/${post.fields.category}`}>
+  //                 <Link fade  to={`/category/${post.fields.category}`}>
   //                   {post.fields.category}
   //                 </Link>
   //               </card>
@@ -134,7 +134,7 @@ export default ({ data, pageContext }) => {
   //               <card>Tags</card>
   //               <card>
   //                 {post.fields.tags.map(tag => (
-  //                   <Link
+  //                   <Link fade
   //                     to={`/tags/${tag}`}
   //                     className="badge badge-primary p-2 m-1"
   //                   >
@@ -148,7 +148,7 @@ export default ({ data, pageContext }) => {
   //             <card>See our other posts</card>
   //             <card>
   //               {previous && (
-  //                 <Link
+  //                 <Link fade
   //                   to={previous.fields.slug}
   //                   rel="prev"
   //                   className="btn btn-secondary"
@@ -158,7 +158,7 @@ export default ({ data, pageContext }) => {
   //               )}
 
   //               {next && (
-  //                 <Link
+  //                 <Link fade
   //                   to={next.fields.slug}
   //                   rel="next"
   //                   className="btn btn-secondary"

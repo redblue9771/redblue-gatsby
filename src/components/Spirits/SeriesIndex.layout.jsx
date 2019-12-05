@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link/AniLink'
 import { PageState } from '../common/MainLayout'
 // import '../assets/css/timeline.min.css'
 import GitHub from '../../assets/img/undraw_developer_activity.svg'
@@ -17,7 +17,7 @@ export default ({
   pageContext,
 }) => {
   const { setCurrPageState } = React.useContext(PageState)
-  console.log(pageContext)
+
   React.useEffect(() => {
     setCurrPageState({
       title: '博文',
@@ -44,6 +44,7 @@ export default ({
         template.push(
           <li className="page-item" key={`page${pageIndex}`}>
             <Link
+              fade
               className="page-link"
               to={`${location.pathname.replace(/\/\d+/, '')}/${
                 pageIndex === 1 ? '' : pageIndex
@@ -61,9 +62,9 @@ export default ({
   return (
     <section className="article-series position-relative">
       <div>
-        {pageContext.list.map(([key, value]) => (
+        {pageContext.list.map(([key, value], index) => (
           <article
-            key={key}
+            key={index}
             className="mx-3 mb-3 shadow"
             style={{
               background: `url(/img/series/books.jpg)`,
@@ -72,6 +73,7 @@ export default ({
             }}
           >
             <Link
+              fade
               to={`${location.pathname}/${key}/`}
               className="d-block w-100 h-100"
               rel="glossary"
