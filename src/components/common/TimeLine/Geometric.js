@@ -17,7 +17,7 @@ const item = ({ date, title, description, component: Component, ...other }) =>
       </div>
     </Component>
   ) : (
-    <div className="timeline-geo" key={key || date || title || description}>
+    <div className="timeline-geo" key={date || title || description}>
       <div className="timeline-geo-icon" />
       <div className="timeline-geo-content">
         <span className="date">{date}</span>

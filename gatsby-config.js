@@ -53,9 +53,19 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-scroll-reveal`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-123575709-1',
+      },
+    },
+    {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: true,
+        purgeOnly: [
+          'assets/css/custom.css',
+          'node_modules/line-awesome/dist/line-awesome/css/line-awesome.min.css',
+        ],
       },
     },
     {
@@ -77,11 +87,14 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map((edge) => {
-                return { ...edge.node.frontmatter, description: edge.node.excerpt,
+                return {
+                  ...edge.node.frontmatter,
+                  description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],}
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                }
               })
             },
             query: `
