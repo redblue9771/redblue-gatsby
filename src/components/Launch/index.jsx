@@ -9,6 +9,8 @@ import SEO from '../common/SEO'
 import Carousel from '../common/Carousel'
 
 import GitHub from '../../assets/img/undraw_developer_activity.svg'
+import Profile from '../../assets/img/undraw_profile.svg'
+import Recent from '../../assets/img/undraw_annotation.svg'
 
 const GITHUB_QUERY = gql`
   {
@@ -64,8 +66,18 @@ export default ({
         <h2>I'm RedBlue</h2>
         <h3>你好，我是赤琦</h3>
         <div className="row limit-area">
-          <div className="col-md-4 pd-1 text-center bg-color-blue">
-            <dl>
+          <div
+            className="col-md-4 pd-1 text-center bg-color-blue"
+            style={{
+              minHeight: '22.25rem',
+              background: `url(${Recent}) #2196f3`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundOrigin: 'content-box',
+            }}
+          >
+            <dl style={{ backgroundColor: 'rgba(33,150,243,0.618)' }}>
               <dt>
                 <h4>·&nbsp;博文&nbsp;·</h4>
               </dt>
@@ -91,6 +103,7 @@ export default ({
           <div
             className="col-md-4 pd-1 text-center bg-color-white"
             style={{
+              minHeight: '22.25rem',
               background: `url(${GitHub}) #fff`,
               backgroundSize: 'contain',
               backgroundPosition: 'center',
@@ -122,7 +135,7 @@ export default ({
                         href={url}
                         className="d-block text-truncate"
                         target="_blank"
-                        rel=""
+                        rel="noopener noreferrer"
                       >
                         {name}
                         <time className="d-block text-truncate">
@@ -134,8 +147,18 @@ export default ({
                 )}
             </dl>
           </div>
-          <div className="col-md-4 pd-1 text-center bg-color-red">
-            <dl>
+          <div
+            className="col-md-4 pd-1 text-center bg-color-red"
+            style={{
+              minHeight: '22.25rem',
+              background: `url(${Profile}) #2196f3`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundOrigin: 'content-box',
+            }}
+          >
+            <dl style={{ backgroundColor: 'rgba(33,150,243,0.618)' }}>
               <dt>
                 <h4>·&nbsp;关于&nbsp;·</h4>
               </dt>

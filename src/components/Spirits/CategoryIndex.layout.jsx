@@ -1,10 +1,8 @@
-import React from 'react'
 import Link from 'gatsby-plugin-transition-link/AniLink'
-import { PageState } from '../common/MainLayout'
-// import '../assets/css/timeline.min.css'
-import GitHub from '../../assets/img/undraw_developer_activity.svg'
-import TimeLine from '../common/TimeLine/Geometric'
+import React from 'react'
 import translate from '../../utils/translate'
+import { PageState } from '../common/MainLayout'
+import TimeLine from '../common/TimeLine/Geometric'
 
 export default ({
   location,
@@ -15,6 +13,7 @@ export default ({
     },
   },
   pageContext,
+  baseURL,
 }) => {
   const { setCurrPageState } = React.useContext(PageState)
   React.useEffect(() => {
@@ -45,7 +44,8 @@ export default ({
             <Link
               fade
               className="page-link"
-              to={`${location.pathname.replace(/\/\d+/, '')}/${
+              to={`${baseURL ||
+                location.pathname.match(/(.*)(?=page)*/g)[0]}/page/${
                 pageIndex === 1 ? '' : pageIndex
               }`}
             >
@@ -77,11 +77,17 @@ export default ({
           {pageContext.list.map(([key, value], index) => (
             <li className="breadcrumb-item" key={index}>
               {pageContext.currItem === key &&
-              location.pathname.includes(pageContext.currItem) ? (
-                `${translate[key]}(${value})`
+              decodeURIComponent(location.pathname).includes(
+                pageContext.currItem
+              ) ? (
+                `${translate[key] || key}(${value})`
               ) : (
-                <Link fade to={`/${location.pathname.split('/')[1]}/${key}/`}>
-                  {`${translate[key]}(${value})`}
+                <Link
+                  fade
+                  to={`${baseURL ||
+                    location.pathname.match(/(.*)(?=page)*/g)[0]}/${key}/`}
+                >
+                  {`${translate[key] || key}(${value})`}
                 </Link>
               )}
             </li>
@@ -126,7 +132,7 @@ export default ({
                 fade
                 className="page-link"
                 aria-label="First"
-                to="/spirits/"
+                to={baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]}
               >
                 <span aria-hidden="true">&laquo;</span>
               </Link>
@@ -139,7 +145,10 @@ export default ({
                 fade
                 className="page-link"
                 aria-label="Last"
-                to={`${location.pathname.replace(/\/\d+/, '')}/${pageCount}`}
+                to={`${baseURL ||
+                  location.pathname.match(
+                    /(.*)(?=page)*/g
+                  )[0]}/page/${pageCount}`}
               >
                 <span aria-hidden="true">&raquo;</span>
               </Link>

@@ -38,4 +38,6 @@ export const pageQuery = graphql`
   }
 `
 
-export default (props) => <Spirits layout="category" {...props} />
+export default (props) => (
+  <Spirits layout="category" baseURL="/spirits/" {...props} />
+)

@@ -1,0 +1,58 @@
+.btn-menu {
+  position: relative;
+}
+
+.btn-menu .bar,
+.btn-menu .bar:before,
+.btn-menu .bar:after {
+  display: block;
+  position: absolute;
+  width: 1rem;
+  height: 2px;
+  background-color: white;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-menu .bar {
+  top: 0;
+  left: 8px;
+}
+
+.btn-menu .bar:before {
+  position: absolute;
+  content: '';
+  top: 5px;
+  left: 4px;
+}
+
+.btn-menu .bar:after {
+  position: absolute;
+  content: '';
+  top: -5px;
+  left: 4px;
+}
+
+.showBar .btn-menu .bar {
+  background-color: transparent;
+}
+
+.showBar .btn-menu .bar:before {
+  top: 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.showBar .btn-menu .bar:after {
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.showBar {
+  background-color: #448aff;
+}
+
+.overlay {
+  text-align: center;
+}

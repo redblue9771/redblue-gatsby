@@ -2,6 +2,11 @@ import Link from 'gatsby-plugin-transition-link/AniLink'
 import React from 'react'
 import { PageState } from '../common/MainLayout'
 
+const fontColors = ['#29b7dc', '#6a9bd3', '#3a4f92', '#a7e2f1', '#9dbde2']
+
+const randomFz = () => Math.floor(Math.random() * 16 + 16)
+const randomC = () => Math.floor(Math.random() * 5)
+
 export default ({ location, pageContext }) => {
   const { setCurrPageState } = React.useContext(PageState)
 
@@ -17,7 +22,15 @@ export default ({ location, pageContext }) => {
   return (
     <section id="article-tags">
       {pageContext.list.map(([key, value], index) => (
-        <Link fade to={`${location.pathname}/${key}/`} key={index}>
+        <Link
+          fade
+          to={`${location.pathname}/${key}/`}
+          key={index}
+          style={{
+            color: `${fontColors[randomC()]}`,
+            fontSize: `${randomFz()}px`,
+          }}
+        >
           {key}
         </Link>
       ))}

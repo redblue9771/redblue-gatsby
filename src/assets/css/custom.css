@@ -1166,10 +1166,6 @@ a.carousel-control-prev {
 }
 
 @media (max-width: 575.98px) {
-  div#main-nav:hover {
-    background-color: #448aff !important;
-  }
-
   .trans-img {
     width: 70%;
   }

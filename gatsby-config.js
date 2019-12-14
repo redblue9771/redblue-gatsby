@@ -31,6 +31,7 @@ module.exports = {
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
+          `gatsby-plugin-catch-links`,
           {
             resolve: 'gatsby-plugin-draft',
             options: {
@@ -122,5 +123,6 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sitemap`,
   ],
 }

@@ -2,9 +2,10 @@ import Link from 'gatsby-plugin-transition-link/AniLink'
 import 'katex/dist/katex.min.css'
 import React from 'react'
 import '../../assets/css/highlighting.css'
+import { useStaticQuery, graphql } from 'gatsby'
 import { PageState } from '../common/MainLayout'
 
-export default ({ data, pageContext }) => {
+export default ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
   const { frontmatter } = post
@@ -20,9 +21,20 @@ export default ({ data, pageContext }) => {
     })
   }, [])
 
-  const renderAside = () => {
+  const renderAside = ({ tableOfContents }) => {
     return (
       <aside className="sticky-top float-md-right" id="blog-aside">
+        <section>
+          <div className="divider">
+            <span />
+            <span>
+              <i className="las la-mortar-board" />
+              目录
+            </span>
+            <span />
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
+        </section>
         <section>
           <div className="divider">
             <span />
@@ -78,16 +90,22 @@ export default ({ data, pageContext }) => {
                   </React.Fragment>
                 )}
               </tr>
-              {/* <tr>
-          <td>原文</td>
-
-          <td>{{$.Permalink}}</td>
-          {{else}} {{if eq (.Page.Param "original") "来自互联网"}}
-          <td><a>{{- .Page.Param "original"}}</a></td>
-          {{else}}
-          <td><a href='{{.Page.Param "original"}}' target="_blank" rel="copyright">{{.Page.Param "original"}}</a></td>
-          {{end -}} {{end -}}
-        </tr> */}
+              <tr>
+                <td>原文</td>
+                <td>
+                  {frontmatter.original === '来自互联网' ? (
+                    frontmatter.original
+                  ) : (
+                    <a
+                      href={frontmatter.original || location.href}
+                      target="_blank"
+                      rel="noopener noreferrer copyright"
+                    >
+                      {frontmatter.original || location.href}
+                    </a>
+                  )}
+                </td>
+              </tr>
               <tr>
                 <td>作者</td>
                 <td>{frontmatter.author}</td>
@@ -110,9 +128,17 @@ export default ({ data, pageContext }) => {
           <span>评论</span>
           <span />
         </div>
-        {/* <script src="https://utteranc.es/client.js" repo="redblue9771/comments-for-redblue" issue-term="url" label="comment" theme="github-light" crossorigin="anonymous" async></script> */}
+        <script
+          src="https://utteranc.es/client.js"
+          repo="redblue9771/comments-for-redblue"
+          issue-term="url"
+          label="comment"
+          theme="github-light"
+          crossOrigin="anonymous"
+          async
+        />
       </main>
-      {renderAside()}
+      {renderAside(post)}
     </React.Fragment>
   )
 

@@ -16,10 +16,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const numPages = Math.ceil(pages / perPage)
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: i ? `${pathname}${i + 1}` : pathname,
+        path: i ? `${pathname}page/${i + 1}` : pathname,
         component,
         context: {
-          slug: i ? `${pathname}${i + 1}` : pathname,
+          slug: i ? `${pathname}page/${i + 1}` : pathname,
           list,
           currItem,
           limit: perPage,

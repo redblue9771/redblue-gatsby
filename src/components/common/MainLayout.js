@@ -7,7 +7,7 @@ import 'line-awesome/dist/line-awesome/css/line-awesome.min.css'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import { ApolloProvider } from '@apollo/react-hooks'
-import Navigation from './Navigation'
+import Navigation from './NavBar'
 import Header from './Header'
 import Footer from './Footer'
 
