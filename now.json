@@ -1,5 +1,7 @@
 {
-    "env": {
-        "GATSBY_GITHUB_TOKEN": "gatsby_github_token"
+    "build": {
+        "env": {
+            "GATSBY_GITHUB_TOKEN": "gatsby_github_token"
+        }
     }
 }
