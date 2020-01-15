@@ -83,7 +83,7 @@
     "lint": "eslint \"src/**/*.+(js|jsx)\"",
     "fix": "eslint --fix \"src/**/*.+(js|jsx)\"",
     "format": "prettier --write \"**/*.+(js|jsx|css)\"",
-    "start": "yarn develop",
+    "start": "gatsby develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   }
