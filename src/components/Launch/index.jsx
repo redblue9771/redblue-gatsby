@@ -86,7 +86,6 @@ export default ({
                 return (
                   <dd key={node.fields.slug}>
                     <Link
-                      fade
                       className="d-block text-truncate"
                       to={node.fields.slug}
                     >

@@ -44,7 +44,6 @@ export default ({
         template.push(
           <li className="page-item" key={`page${pageIndex}`}>
             <Link
-              fade
               className="page-link"
               to={`${location.pathname.replace(/\/\d+/, '')}/${
                 pageIndex === 1 ? '' : pageIndex
@@ -73,7 +72,6 @@ export default ({
             }}
           >
             <Link
-              fade
               to={`${location.pathname}/${key}/`}
               className="d-block w-100 h-100"
               rel="glossary"

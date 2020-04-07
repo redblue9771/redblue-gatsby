@@ -20,9 +20,7 @@ export default () => {
       <div className="alert alert-primary" role="alert">
         <h4>
           页面不存在，旧站的页面链接已经改变，请到
-          <Link fade to="/">
-            主页
-          </Link>
+          <Link to="/">主页</Link>
           中寻找
         </h4>
       </div>

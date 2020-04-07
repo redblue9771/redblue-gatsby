@@ -42,12 +42,10 @@ export default ({
         template.push(
           <li className="page-item" key={`page${pageIndex}`}>
             <Link
-              fade
               className="page-link"
-              to={`${baseURL ||
-                location.pathname.match(/(.*)(?=page)*/g)[0]}/page/${
-                pageIndex === 1 ? '' : pageIndex
-              }`}
+              to={`${
+                baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]
+              }/page/${pageIndex === 1 ? '' : pageIndex}`}
             >
               {pageIndex}
             </Link>
@@ -83,9 +81,9 @@ export default ({
                 `${translate[key] || key}(${value})`
               ) : (
                 <Link
-                  fade
-                  to={`${baseURL ||
-                    location.pathname.match(/(.*)(?=page)*/g)[0]}/${key}/`}
+                  to={`${
+                    baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]
+                  }/${key}/`}
                 >
                   {`${translate[key] || key}(${value})`}
                 </Link>
@@ -96,12 +94,12 @@ export default ({
         <ul className="breadcrumb justify-content-end">
           <li>其他分类：</li>
           <li className="breadcrumb-item">
-            <Link fade to="/spirits/tags/" rel="bookmark">
+            <Link to="/spirits/tags/" rel="bookmark">
               按标签
             </Link>
           </li>
           <li className="breadcrumb-item">
-            <Link fade to="/spirits/series/" rel="bookmark">
+            <Link to="/spirits/series/" rel="bookmark">
               按系列
             </Link>
           </li>
@@ -111,14 +109,14 @@ export default ({
         <TimeLine.container>
           {posts.map(({ node }) => (
             <TimeLine.item
-              date={`${node.frontmatter.author} - ${node.frontmatter.date ||
-                new Date().toLocaleDateString()}`}
+              date={`${node.frontmatter.author} - ${
+                node.frontmatter.date || new Date().toLocaleDateString()
+              }`}
               title={node.frontmatter.title || node.fields.slug}
               description={node.frontmatter.description || node.excerpt}
               to={node.fields.slug}
               key={node.fields.slug}
               component={Link}
-              fade
               data-sal="slide-down"
             />
           ))}
@@ -129,7 +127,6 @@ export default ({
           {hasPreviousPage && (
             <li className="page-item">
               <Link
-                fade
                 className="page-link"
                 aria-label="First"
                 to={baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]}
@@ -142,13 +139,11 @@ export default ({
           {hasNextPage && (
             <li className="page-item">
               <Link
-                fade
                 className="page-link"
                 aria-label="Last"
-                to={`${baseURL ||
-                  location.pathname.match(
-                    /(.*)(?=page)*/g
-                  )[0]}/page/${pageCount}`}
+                to={`${
+                  baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]
+                }/page/${pageCount}`}
               >
                 <span aria-hidden="true">&raquo;</span>
               </Link>

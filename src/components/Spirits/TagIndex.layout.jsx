@@ -23,7 +23,6 @@ export default ({ location, pageContext }) => {
     <section id="article-tags">
       {pageContext.list.map(([key, value], index) => (
         <Link
-          fade
           to={`${location.pathname}/${key}/`}
           key={index}
           style={{

@@ -27,7 +27,6 @@ export default ({ title = 'RedBlue | 赤琦', styleName = '' }) => {
     ) : (
       <Nav.Link
         as={Link}
-        fade
         key={path}
         to={path || '/404/'}
         className="text-white text-nowrap"

@@ -43,13 +43,13 @@ export default ({ data, pageContext, location }) => {
           </div>
 
           {previous && (
-            <Link fade to={previous.fields.slug} rel="prev" className="d-block">
+            <Link to={previous.fields.slug} rel="prev" className="d-block">
               上一篇：{previous.frontmatter.title}
             </Link>
           )}
 
           {next && (
-            <Link fade to={next.fields.slug} rel="next" className="d-block">
+            <Link to={next.fields.slug} rel="next" className="d-block">
               下一篇：{next.frontmatter.title}
             </Link>
           )}
