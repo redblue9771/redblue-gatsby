@@ -1,15 +1,20 @@
 {
+  "2020本科毕业设计": [
+    {
+      "name": "基于微服务架构的云端数据监控系统",
+      "author": "高阳",
+      "path": "pdf/2020-iot.pdf",
+      "description": "",
+      "keywords": ["MicroServices", "Firebase", "Serverless", "BaaS", "FaaS"]
+    }
+  ],
   "Fuchsia OS": [
     {
       "name": "Fuchsia 简介",
       "author": "许中兴",
       "path": "pdf/201806fuchsia.pdf",
       "description": "",
-      "keywords": [
-        "Fuchsia",
-        "Google",
-        "操作系统"
-      ]
+      "keywords": ["Fuchsia", "Google", "操作系统"]
     }
   ],
   "Google 三大论文": [
@@ -32,27 +37,14 @@
       "author": "Jeffrey Dean and Sanjay Ghemawat",
       "path": "pdf/mapreduce-osdi04.pdf",
       "description": "",
-      "keywords": [
-        "分布式",
-        "Google",
-        "Hadoop",
-        "软件模型",
-        "Map-Reduce"
-      ]
+      "keywords": ["分布式", "Google", "Hadoop", "软件模型", "Map-Reduce"]
     },
     {
       "name": "The Google File System",
       "author": "Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung",
       "path": "pdf/gfs-sosp2003.pdf",
       "description": "",
-      "keywords": [
-        "分布式",
-        "Google",
-        "Hadoop",
-        "软件模型",
-        "Chunk",
-        "GFS"
-      ]
+      "keywords": ["分布式", "Google", "Hadoop", "软件模型", "Chunk", "GFS"]
     }
   ]
 }
