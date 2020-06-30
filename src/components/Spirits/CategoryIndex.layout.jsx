@@ -83,7 +83,7 @@ export default ({
                 <Link
                   to={`${
                     baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]
-                  }/${key}/`}
+                  }${key}/`}
                 >
                   {`${translate[key] || key}(${value})`}
                 </Link>

@@ -23,7 +23,7 @@ export default ({ location, pageContext }) => {
     <section id="article-tags">
       {pageContext.list.map(([key, value], index) => (
         <Link
-          to={`${location.pathname}/${key}/`}
+          to={`${location.pathname}${key}/`}
           key={index}
           style={{
             color: `${fontColors[randomC()]}`,

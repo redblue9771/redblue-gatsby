@@ -72,7 +72,7 @@ export default ({
             }}
           >
             <Link
-              to={`${location.pathname}/${key}/`}
+              to={`${location.pathname}${key}/`}
               className="d-block w-100 h-100"
               rel="glossary"
             >
