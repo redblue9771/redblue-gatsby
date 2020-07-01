@@ -25,4 +25,4 @@ Git Large File Storage (LFS) 是一种能够将 Repository 中的各种非代码
 
 3. **关键**：执行 `git rm --cached *`，其中 --cached 属性必不可少，该命令会刷新所有 Git 记录的文件缓存
 
-4. 这时你会发现你刷新了整个 Git 记录，提示需要 add 所有的 change，不要惊慌，在 VScode 上`git discard all changes`你会发现只剩下被 Git LFS 跟踪的文件可以被 add 并 commit，到这里就已经移除了 Git LFS
+4. 这时你会发现你刷新了整个 Git 记录，提示需要 add 所有的 change，不要惊慌，此时直接`git add .`并 commit 记录就可以了，到这里就已经移除了 Git LFS

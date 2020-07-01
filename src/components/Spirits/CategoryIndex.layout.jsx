@@ -45,7 +45,7 @@ export default ({
               className="page-link"
               to={`${
                 baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]
-              }/page/${pageIndex === 1 ? '' : pageIndex}`}
+              }page/${pageIndex === 1 ? '' : pageIndex}`}
             >
               {pageIndex}
             </Link>
@@ -72,27 +72,27 @@ export default ({
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
           <li>分类：</li>
-          {pageContext.list.map(([key, value], index) => (
+          {pageContext.list.map(([name, number], index) => (
             <li className="breadcrumb-item" key={index}>
-              {pageContext.currItem === key &&
+              {pageContext.currItem === name &&
               decodeURIComponent(location.pathname).includes(
                 pageContext.currItem
               ) ? (
-                `${translate[key] || key}(${value})`
+                `${translate[name] || name}(${number})`
               ) : (
                 <Link
                   to={`${
                     baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]
-                  }${key}/`}
+                  }${name}/`}
                 >
-                  {`${translate[key] || key}(${value})`}
+                  {`${translate[name] || name}(${number})`}
                 </Link>
               )}
             </li>
           ))}
         </ul>
         <ul className="breadcrumb justify-content-end">
-          <li>其他分类：</li>
+          <li>其它分类：</li>
           <li className="breadcrumb-item">
             <Link to="/spirits/tags/" rel="bookmark">
               按标签
@@ -143,7 +143,7 @@ export default ({
                 aria-label="Last"
                 to={`${
                   baseURL || location.pathname.match(/(.*)(?=page)*/g)[0]
-                }/page/${pageCount}`}
+                }page/${pageCount}`}
               >
                 <span aria-hidden="true">&raquo;</span>
               </Link>

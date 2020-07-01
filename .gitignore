@@ -63,3 +63,5 @@ typings/
 # gatsby
 .cache
 public
+
+package-lock.json

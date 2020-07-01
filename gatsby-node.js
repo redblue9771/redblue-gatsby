@@ -31,10 +31,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-  const calcTotal = (obj, container = new Map()) => {
-    switch (Object.prototype.toString.call(obj)) {
+  const calcTotal = (ctx, container = new Map()) => {
+    switch (Object.prototype.toString.call(ctx)) {
       case '[object Array]':
-        obj.forEach((child) => {
+        ctx.forEach((child) => {
           if (child) {
             container.set(
               child,
@@ -44,7 +44,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         })
         return
       case '[object String]':
-        container.set(obj, (container.has(obj) ? container.get(obj) : 0) + 1)
+        container.set(ctx, (container.has(ctx) ? container.get(ctx) : 0) + 1)
         return
       default:
         return null
@@ -94,6 +94,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     calcTotal(frontmatter.category, categories)
     calcTotal(frontmatter.tags, tags)
     calcTotal(frontmatter.series, series)
+    console.log(series)
 
     createPage({
       path: fields.slug,
