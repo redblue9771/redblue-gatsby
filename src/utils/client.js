@@ -6,5 +6,6 @@ export default new ApolloClient({
   headers: {
     Authorization: `Bearer ${process.env.GATSBY_GITHUB_TOKEN}`,
   },
+  credentials: 'include',
   fetch,
 })
