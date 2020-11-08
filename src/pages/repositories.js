@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 import React from 'react'
 import Repositories from '../components/Repositories'
 
-const GITHUB_QUERY = gql`
+export const GITHUB_QUERY = gql`
   {
     viewer {
       repositories(

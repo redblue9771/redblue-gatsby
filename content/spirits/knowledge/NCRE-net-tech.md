@@ -8,7 +8,7 @@ tags:
   - 网络技术
 title: NCRE 计算机三级网络技术「指北」
 category:
-  - konwledge
+  - knowledge
 ---
 
 # 三级网络技术考过指南
