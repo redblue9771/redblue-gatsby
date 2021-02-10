@@ -9,6 +9,25 @@ module.exports = {
     social: {},
   },
   plugins: [
+    'gatsby-plugin-netlify-cms',
+    'gatsby-plugin-offline',
+    // 'gatsby-plugin-manifest',
+    'gatsby-plugin-mdx',
+
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-123575709-1',
+      },
+    },
+    `gatsby-plugin-typescript`,
+    // {
+    //   resolve: `gatsby-plugin-typescript`,
+    //   options: {
+    //     isTSX: true, // defaults to false
+    //     allExtensions: true, // defaults to false
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -54,12 +73,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-scroll-reveal`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-123575709-1',
-      },
-    },
-    {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: true,
@@ -87,16 +100,14 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map((edge) => {
-                return {
-                  ...edge.node.frontmatter,
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
-                }
-              })
+              return allMarkdownRemark.edges.map((edge) => ({
+                ...edge.node.frontmatter,
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+              }))
             },
             query: `
               {

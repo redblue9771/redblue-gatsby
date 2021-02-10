@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-plugin-transition-link/AniLink'
 import gql from 'graphql-tag'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 
 import { PageState } from '../common/MainLayout'
 import SEO from '../common/SEO'

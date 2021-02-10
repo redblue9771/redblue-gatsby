@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../assets/css/timeline.min.css'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { PageState } from '../common/MainLayout'
 

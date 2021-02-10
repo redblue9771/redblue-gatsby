@@ -1,6 +1,12 @@
 import React from 'react'
 
-export default ({ subTitle = '', description = '', date, layout = '' }) => {
+export default ({
+  subTitle = '',
+  description = '',
+  date,
+  layout = '',
+  offset = 0,
+}) => {
   const renderTitle = () => {
     switch (layout) {
       case 'post':

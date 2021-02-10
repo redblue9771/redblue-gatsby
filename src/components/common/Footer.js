@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default () => {
+const Footer = () => {
   return (
     <div className="container-fluid floor" id="fl">
       <div className="floor-info-before" />
@@ -30,3 +30,4 @@ export default () => {
     </div>
   )
 }
+export default Footer

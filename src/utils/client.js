@@ -1,10 +1,12 @@
-import ApolloClient from 'apollo-boost'
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 import fetch from 'isomorphic-fetch'
 
-export default new ApolloClient({
-  uri: 'https://api.github.com/graphql',
+const client = new ApolloClient({
+  link: new HttpLink({ uri: 'https://api.github.com/graphql', fetch }),
   headers: {
     Authorization: `Bearer ${process.env.GATSBY_GITHUB_TOKEN}`,
   },
-  fetch,
+  cache: new InMemoryCache(),
 })
+
+export default client

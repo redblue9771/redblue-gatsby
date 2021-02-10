@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         container.set(ctx, (container.has(ctx) ? container.get(ctx) : 0) + 1)
         return
       default:
-        return null
+        return
     }
   }
 

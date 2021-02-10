@@ -548,10 +548,13 @@ p code {
 }
 
 .header-after {
-  background: -o-linear-gradient(95deg, transparent 8.75vw, #448aff 0);
-  background: linear-gradient(-5deg, transparent 8.75vw, #448aff 0);
+  /* background: -o-linear-gradient(95deg, transparent 8.75vw, #448aff 0);
+  background: linear-gradient(-5deg, transparent 8.75vw, #448aff 0); */
   height: 8.75vw;
   margin-top: -1px;
+  clip-path: polygon(0px 0px, 100% 0%, 100% 0, 0% 100%);
+  background-color: #448aff;
+  /* transition: height 1s; */
 }
 
 img {
@@ -1086,10 +1089,12 @@ details[open] + div {
 }
 
 .floor-info-before {
-  background: -o-linear-gradient(275deg, transparent 8.75vw, #f44336 0);
-  background: linear-gradient(-185deg, transparent 8.75vw, #f44336 0);
+  /* background: -o-linear-gradient(275deg, transparent 8.75vw, #f44336 0);
+  background: linear-gradient(-185deg, transparent 8.75vw, #f44336 0); */
   height: 8.75vw;
   margin-bottom: -1px;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%, 100% 100%);
+  background-color: #f44336;
 }
 
 .floor-info {

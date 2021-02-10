@@ -6,7 +6,7 @@ import 'line-awesome/dist/line-awesome/css/line-awesome.min.css'
 
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client'
 import Navigation from './NavBar'
 import Header from './Header'
 import Footer from './Footer'
@@ -80,7 +80,7 @@ export default ({ children }) => {
         styleName={isTransed ? 'main-nav-scroll' : ''}
       />
 
-      <Header {...currPageState} />
+      <Header {...currPageState} offset={rect.top} />
       <div
         className={`container-fluid clearfix ${
           currPageState.layout !== 'home' ? 'main-area' : 'main-area-fluid'
