@@ -12,7 +12,7 @@ module.exports = {
     'gatsby-plugin-netlify-cms',
     'gatsby-plugin-offline',
     // 'gatsby-plugin-manifest',
-    'gatsby-plugin-mdx',
+    // 'gatsby-plugin-mdx',
 
     {
       resolve: 'gatsby-plugin-google-analytics',
