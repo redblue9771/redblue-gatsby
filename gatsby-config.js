@@ -9,7 +9,7 @@ module.exports = {
     social: {},
   },
   plugins: [
-    'gatsby-plugin-netlify-cms',
+    // 'gatsby-plugin-netlify-cms',
     'gatsby-plugin-offline',
     // 'gatsby-plugin-manifest',
     // 'gatsby-plugin-mdx',
