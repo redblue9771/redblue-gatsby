@@ -15,8 +15,10 @@ export default ({
             <h1 className="display-1" id="post-title">
               {subTitle}
             </h1>
-            <span>日期：</span>
-            <time>{date}</time>
+            <h4>{description}</h4>
+
+            <h6>日期：<h4 className='d-inline-block'>{date}</h4></h6>
+
           </React.Fragment>
         )
 

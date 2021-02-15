@@ -106,9 +106,9 @@ export default ({
         </ul>
       </nav>
       <div className="row">
-        <TimeLine.container>
+        <TimeLine.Container>
           {posts.map(({ node }) => (
-            <TimeLine.item
+            <TimeLine.Item
               date={`${node.frontmatter.author} - ${
                 node.frontmatter.date || new Date().toLocaleDateString()
               }`}
@@ -120,7 +120,7 @@ export default ({
               data-sal="slide-down"
             />
           ))}
-        </TimeLine.container>
+        </TimeLine.Container>
       </div>
       {pageCount !== 1 && (
         <ul className="pagination">

@@ -28,6 +28,6 @@ const item = ({ date, title, description, component: Component, ...other }) =>
   )
 
 export default {
-  container,
-  item,
+ Container: container,
+ Item: item,
 }

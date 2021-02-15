@@ -77,7 +77,7 @@ export default ({
           {pageContext.list.map(([key, value], index) => (
             <article
               key={index}
-              className="mx-3 mb-3 shadow"
+              className="mx-3 mb-3 shadow-lg"
               style={{
                 background: `url(/img/series/books.jpg)`,
                 backgroundRepeat: 'no-repeat',
@@ -89,7 +89,7 @@ export default ({
                 className="d-block w-100 h-100"
                 rel="glossary"
               >
-                <h4 className="text-white mx-3">《{key}》</h4>
+                <h4 className="text-white text-wrap mx-3">{key}</h4>
               </Link>
             </article>
           ))}

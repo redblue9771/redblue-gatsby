@@ -948,8 +948,8 @@ details[open] + div {
 
 .article-series article {
   display: inline-block;
-  width: 16em;
-  height: 9em;
+  width: 260px;
+  height: 180px;
 }
 
 .shade-left,
@@ -1143,6 +1143,10 @@ a.carousel-control-prev {
   );
   background: -o-linear-gradient(left, white, transparent);
   background: linear-gradient(to right, white, transparent);
+}
+
+.main-area > div {
+  overflow: hidden;
 }
 
 @media (max-width: 767.98px) {

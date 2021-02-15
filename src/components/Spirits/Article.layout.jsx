@@ -17,6 +17,7 @@ export default ({ data, pageContext, location }) => {
       title: frontmatter.title,
       subTitle: frontmatter.title,
       date: frontmatter.date,
+      description :frontmatter.description,
       layout: 'post',
     })
   }, [])
@@ -113,6 +114,7 @@ export default ({ data, pageContext, location }) => {
             </tbody>
           </table>
         </address>
+
         <div className="divider d-none d-md-block">
           <span />
           <span>正文</span>
@@ -120,6 +122,7 @@ export default ({ data, pageContext, location }) => {
         </div>
         <article
           id="blog-article"
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
         <p>（完）</p>
