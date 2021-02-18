@@ -94,10 +94,12 @@ export default ({ data, pageContext, location }) => {
                 <td>作者</td>
                 <td>{frontmatter.author}</td>
               </tr>
-              <tr>
-                <td>标签</td>
-                <td>{frontmatter.tags.join('、')}</td>
-              </tr>
+              {Array.isArray(frontmatter.tags) && (
+                <tr>
+                  <td>标签</td>
+                  <td>{frontmatter.tags.join('、')}</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </address>
