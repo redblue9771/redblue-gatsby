@@ -26,7 +26,9 @@ export default ({ data }) => {
                   <div>
                     {name} - {author}
                   </div>
-                  <div className="text-muted">简述：{description}</div>
+                  {description && (
+                    <div className="text-muted">简述：{description}</div>
+                  )}
 
                   <div className="text-muted tags mb-3">
                     关键词：{keywords.join('、')}
@@ -38,7 +40,7 @@ export default ({ data }) => {
                     rel="contents noopener noreferrer"
                     download
                   >
-                    Download / Read
+                    📥 Download / Read
                   </a>
                 </li>
               )

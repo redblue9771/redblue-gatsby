@@ -1,16 +1,12 @@
-import React from 'react'
+import { useQuery } from '@apollo/client'
 import Link from 'gatsby-plugin-transition-link/AniLink'
 import gql from 'graphql-tag'
-import { useQuery } from '@apollo/client'
-
-import { PageState } from '../common/MainLayout'
-import SEO from '../common/SEO'
-
-import Carousel from '../common/Carousel'
-
+import React from 'react'
+import Recent from '../../assets/img/undraw_annotation.svg'
 import GitHub from '../../assets/img/undraw_developer_activity.svg'
 import Profile from '../../assets/img/undraw_profile.svg'
-import Recent from '../../assets/img/undraw_annotation.svg'
+import Carousel from '../common/Carousel'
+import { PageState } from '../common/MainLayout'
 
 const GITHUB_QUERY = gql`
   {
@@ -120,10 +116,7 @@ export default ({
 
               {(loading || error) && (
                 <dd>
-                  <p>
-                    <i className="la la-free-code-camp" />从
-                    github.com/redblue9771 拉取中…
-                  </p>
+                  <p className="masked">🏃‍♂️ 从 github.com/redblue9771 拉取中…</p>
                 </dd>
               )}
               {data &&
@@ -168,21 +161,14 @@ export default ({
                 </p>
               </dd>
               <dd>
-                <p>
-                  <i className="la la-location-arrow"> </i>
-                  Lcation：福州
-                </p>
+                <p>👨‍💻 Location：红河</p>
+              </dd>
+              <dd>
+                <p>🎓 专业：物联网工程</p>
               </dd>
               <dd>
                 <p>
-                  <i className="la la-graduation-cap"> </i>
-                  专业：物联网工程
-                </p>
-              </dd>
-              <dd>
-                <p>
-                  <i className="la la-atom" />
-                  简介：来自彩云之南的 95
+                  ⚛️ 简介：来自彩云之南的 95
                   后男孩，偏执的完美主义者，体现在方方面面。
                   <br />
                   爱科技、爱搞机、爱摄影、爱一切美好的事物，追求源于热爱。

@@ -23,7 +23,7 @@ export default ({ location, pageContext }) => {
     <React.Fragment>
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
-          <li>其它分类：</li>
+          <li>📒 其它分类：</li>
           <li className="breadcrumb-item">按标签</li>
           <li className="breadcrumb-item">
             <Link to="/spirits/series/" rel="bookmark">

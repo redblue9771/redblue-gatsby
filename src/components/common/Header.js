@@ -17,8 +17,8 @@ export default ({
             </h1>
             <h4>{description}</h4>
 
-            <h6>日期：<h4 className='d-inline-block'>{date}</h4></h6>
-
+            {/* <h6 className="d-inline-block">日期：</h6> */}
+            <h5 className="d-inline-block">{date}</h5>
           </React.Fragment>
         )
 

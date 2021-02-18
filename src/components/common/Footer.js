@@ -20,7 +20,7 @@ const Footer = () => {
               <i className="lab la-github" /> GitHub
             </a>
             丨
-            <a href="mailto:redblue9771@outlook.com" target="_blank">
+            <a href="mailto:redblue9771@icloud.com" target="_blank">
               <i className="las la-at" /> E-mail
             </a>
           </p>

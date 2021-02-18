@@ -62,7 +62,7 @@ export default ({
     <React.Fragment>
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
-          <li>其它分类：</li>
+          <li>📒 其它分类：</li>
           <li className="breadcrumb-item">
             <Link to="/spirits/tags/" rel="bookmark">
               按标签

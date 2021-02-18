@@ -1,15 +1,15 @@
 import Link from 'gatsby-plugin-transition-link/AniLink'
+import parse from 'html-react-parser'
 import 'katex/dist/katex.min.css'
-import React from 'react'
+import React, { useRef } from 'react'
 import '../../assets/css/highlighting.css'
-import { useStaticQuery, graphql } from 'gatsby'
 import { PageState } from '../common/MainLayout'
 
 export default ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
-  const { frontmatter } = post
-
+  const { frontmatter, tableOfContents, html: _html } = post
+  const commentRef = useRef(null)
   const { setCurrPageState } = React.useContext(PageState)
 
   React.useEffect(() => {
@@ -17,47 +17,30 @@ export default ({ data, pageContext, location }) => {
       title: frontmatter.title,
       subTitle: frontmatter.title,
       date: frontmatter.date,
-      description :frontmatter.description,
+      description: frontmatter.description,
       layout: 'post',
     })
-  }, [])
+  }, [frontmatter])
 
-  const renderAside = ({ tableOfContents }) => {
-    return (
-      <aside className="sticky-top float-md-right" id="blog-aside">
-        <section>
-          <div className="divider">
-            <span />
-            <span>
-              <i className="las la-mortar-board" />
-              目录
-            </span>
-            <span />
-          </div>
-          <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
-        </section>
-        <section>
-          <div className="divider">
-            <span />
-            <span>更多</span>
-            <span />
-          </div>
+  console.log(post)
 
-          {previous && (
-            <Link to={previous.fields.slug} rel="prev" className="d-block">
-              上一篇：{previous.frontmatter.title}
-            </Link>
-          )}
+  React.useEffect(() => {
+    const commentScript = document.createElement('script')
+    commentScript.async = true
+    commentScript.src = 'https://utteranc.es/client.js'
+    commentScript.setAttribute('repo', 'redblue9771/comments-for-redblue') // PLEASE CHANGE THIS TO YOUR REPO
+    commentScript.setAttribute('issue-term', 'url')
+    commentScript.setAttribute('id', 'utterances')
+    commentScript.setAttribute('theme', 'github-light')
+    commentScript.setAttribute('crossorigin', 'anonymous')
+    commentScript.setAttribute('label', 'comment')
 
-          {next && (
-            <Link to={next.fields.slug} rel="next" className="d-block">
-              下一篇：{next.frontmatter.title}
-            </Link>
-          )}
-        </section>
-      </aside>
-    )
-  }
+    if (commentRef && commentRef.current) {
+      commentRef.current.appendChild(commentScript)
+    } else {
+      console.log(`Error adding utterances comments on: ${commentRef}`)
+    }
+  }, [commentRef])
 
   return (
     <React.Fragment>
@@ -111,37 +94,65 @@ export default ({ data, pageContext, location }) => {
                 <td>作者</td>
                 <td>{frontmatter.author}</td>
               </tr>
+              <tr>
+                <td>标签</td>
+                <td>{frontmatter.tags.join('、')}</td>
+              </tr>
             </tbody>
           </table>
         </address>
 
         <div className="divider d-none d-md-block">
           <span />
-          <span>正文</span>
+          <span>📖 正文</span>
           <span />
         </div>
-        <article
-          id="blog-article"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+        <article id="blog-article">{parse(_html)}</article>
         <p>（完）</p>
         <div className="divider">
           <span />
-          <span>评论</span>
+          <span>🙋 评论</span>
           <span />
         </div>
-        <script
-          src="https://utteranc.es/client.js"
-          repo="redblue9771/comments-for-redblue"
-          issue-term="url"
-          label="comment"
-          theme="github-light"
-          crossOrigin="anonymous"
-          async
-        />
+        <div ref={commentRef} className="comment" />
       </main>
-      {renderAside(post)}
+
+      <aside className="sticky-top float-md-right" id="blog-aside">
+        <section>
+          <div className="divider">
+            <span />
+            <span>📚 目录</span>
+            <span />
+          </div>
+
+          <nav id="TableOfContents">{parse(tableOfContents)}</nav>
+        </section>
+        <section>
+          <div className="divider">
+            <span />
+            <span>🧐 更多</span>
+            <span />
+          </div>
+
+          {previous && (
+            <React.Fragment>
+              <span style={{ fontSize: 'smaller' }}>上一篇：</span>
+              <Link to={previous.fields.slug} rel="prev" className="d-block">
+                {previous.frontmatter.title}
+              </Link>
+            </React.Fragment>
+          )}
+
+          {next && (
+            <React.Fragment>
+              <span style={{ fontSize: 'smaller' }}>下一篇：</span>
+              <Link to={next.fields.slug} rel="next" className="d-block">
+                {next.frontmatter.title}
+              </Link>
+            </React.Fragment>
+          )}
+        </section>
+      </aside>
     </React.Fragment>
   )
 

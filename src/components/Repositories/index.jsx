@@ -70,7 +70,7 @@ export default () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <i className="lab lab-tags" /> Repositories
+            💻 Repositories
           </a>
         </h3>
         <div className="timeline timeline-single-column" id="github-list">
@@ -143,17 +143,13 @@ export default () => {
               <div className="timeline-event timeline-event-info">
                 <div className="timeline-heading">
                   <h5>
-                    <strong>
-                      <i className="la la-free-code-camp" />从
-                      github.com/redblue9771 拉取中…
+                    <strong className="masked">
+                      🏃‍♂️ 从 github.com/redblue9771 拉取中…
                     </strong>
                   </h5>
                 </div>
                 <div className="timeline-body">
-                  <p>
-                    <i className="la la-free-code-camp" />从
-                    github.com/redblue9771 拉取中…
-                  </p>
+                  <p className="masked">🏃‍♂️ 从 github.com/redblue9771 拉取中…</p>
                 </div>
               </div>
             </div>
@@ -167,7 +163,7 @@ export default () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <i className="fa fa-tags" /> Gist
+            🏷️ Gist
           </a>
         </h3>
       </div>

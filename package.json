@@ -35,7 +35,7 @@
     "gatsby-transformer-sharp": "^2.12.0",
     "graphql-tag": "latest",
     "gsap": "^3.6.0",
-    "isomorphic-fetch": "latest",
+    "html-react-parser": "^1.2.4",
     "katex": "latest",
     "line-awesome": "latest",
     "pangu": "latest",
@@ -46,7 +46,8 @@
     "react-dom": "latest",
     "react-helmet": "^6.1.0",
     "react-horizontal-scrolling-menu": "latest",
-    "referrer-policy": "latest"
+    "referrer-policy": "latest",
+    "unfetch": "^4.2.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.28",

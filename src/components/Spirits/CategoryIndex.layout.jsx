@@ -71,7 +71,7 @@ export default ({
     >
       <nav aria-label="breadcrumb">
         <ul className="breadcrumb justify-content-end">
-          <li>分类：</li>
+          <li>🔖 分类：</li>
           {pageContext.list.map(([name, number], index) => (
             <li className="breadcrumb-item" key={index}>
               {pageContext.currItem === name &&
@@ -92,7 +92,7 @@ export default ({
           ))}
         </ul>
         <ul className="breadcrumb justify-content-end">
-          <li>其它分类：</li>
+          <li>📒 其它分类：</li>
           <li className="breadcrumb-item">
             <Link to="/spirits/tags/" rel="bookmark">
               按标签

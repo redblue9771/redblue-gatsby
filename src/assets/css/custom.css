@@ -703,6 +703,12 @@ img {
   display: inline-block;
   width: calc(100% - 14rem);
   letter-spacing: 1px;
+  counter-reset: section;
+}
+
+#blog-single h3::before {
+  counter-increment: section;
+  content: 'Section ' counter(section) ': ';
 }
 
 .copyright {
@@ -743,14 +749,20 @@ img {
   margin-bottom: 2rem;
   top: 7vh !important;
 }
-
+nav#TableOfContents {
+  padding-left: 1em;
+}
 nav#TableOfContents ul {
-  list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
+nav#TableOfContents p {
+  margin-bottom: 0;
+}
+
 nav#TableOfContents ul ul {
+  list-style-type: none;
   padding-left: 0.6em;
   margin: 0;
 }
@@ -762,14 +774,14 @@ nav#TableOfContents ul li ul li {
 
 nav#TableOfContents li a {
   display: inline-block;
-  color: #555 !important;
+
   text-decoration: none;
   -webkit-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   -o-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-nav#TableOfContents li.visible > a {
+nav#TableOfContents li > a:target {
   color: #000 !important;
   -webkit-transform: translate(5px);
   -ms-transform: translate(5px);
@@ -927,6 +939,23 @@ details[open] + div {
 .carousel font {
   color: #333;
   font-weight: bold;
+}
+
+.masked {
+  background-image: -webkit-linear-gradient(left, red, blue, red, blue, red);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 100%;
+  animation: masked-animation 4s infinite linear;
+}
+
+@keyframes masked-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
 
 #article-tags {
