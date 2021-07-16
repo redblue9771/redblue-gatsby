@@ -36,4 +36,5 @@ export const pageQuery = graphql`
   }
 `
 
-export default (props) => <Spirits layout="tag" {...props} />
+const TagIndex = (props) => <Spirits layout="tag" {...props} />
+export default TagIndex

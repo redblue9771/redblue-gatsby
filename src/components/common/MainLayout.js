@@ -22,7 +22,9 @@ const defaultPageState = {
   layout: '',
 }
 
-export const PageState = React.createContext(defaultPageState)
+export const PageState = React.createContext({
+  currPageState: {...defaultPageState}, setCurrPageState:null
+})
 
 export default ({ children }) => {
   const [isTransed, setIsTransed] = React.useState(false)
@@ -87,7 +89,7 @@ export default ({ children }) => {
         }`}
         ref={ref}
       >
-        <PageState.Provider value={{ setCurrPageState }}>
+        <PageState.Provider value={{currPageState, setCurrPageState }}>
           <ApolloProvider client={client}>{children}</ApolloProvider>
         </PageState.Provider>
       </div>

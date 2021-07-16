@@ -48,7 +48,7 @@ const GITHUB_QUERY = gql`
   }
 `
 
-export default () => {
+const Repose = () => {
   const { setCurrPageState } = React.useContext(PageState)
   const { loading, error, data } = useQuery(GITHUB_QUERY)
 
@@ -108,17 +108,25 @@ export default () => {
                       <div className="timeline-body">
                         <p>{description}</p>
                         <small>
-                          <i className="la la-code">
+                          <span>
+                            <i className="la la-code"></i>
                             {primaryLanguage ? primaryLanguage.name : ''}
-                          </i>
+                          </span>
                           &nbsp;&nbsp;&nbsp;
-                          <i className="las la-star"> {starCount}</i>
+                          <span>
+                            <i className="las la-star"></i>
+                            {starCount}
+                          </span>
                           &nbsp;&nbsp;&nbsp;
-                          <i className="la la-code-branch"> {forkCount}</i>
+                          <span>
+                            <i className="la la-code-branch"></i>
+                            {forkCount}
+                          </span>
                           &nbsp;&nbsp;&nbsp;
-                          <i className="la la-balance-scale">
+                          <span>
+                            <i className="la la-balance-scale"></i>
                             {licenseInfo ? licenseInfo.name : ''}
-                          </i>
+                          </span>
                         </small>
                       </div>
                       <div className="timeline-footer">
@@ -187,3 +195,5 @@ export default () => {
     </div>
   )
 }
+
+export default Repose

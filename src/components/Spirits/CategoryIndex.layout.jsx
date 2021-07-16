@@ -4,7 +4,7 @@ import translate from '../../utils/translate'
 import { PageState } from '../common/MainLayout'
 import TimeLine from '../common/TimeLine/Geometric'
 
-export default ({
+const CategoriesIndex = ({
   location,
   data: {
     allMarkdownRemark: {
@@ -154,3 +154,5 @@ export default ({
     </div>
   )
 }
+
+export default CategoriesIndex

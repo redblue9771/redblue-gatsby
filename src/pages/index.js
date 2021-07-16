@@ -25,4 +25,5 @@ export const pageQuery = graphql`
     }
   }
 `
-export default (props) => <Launch {...props} />
+const LaunchPage = (props) => <Launch {...props} />
+export default LaunchPage

@@ -77,7 +77,7 @@ export default ({
           {pageContext.list.map(([key, value], index) => (
             <article
               key={index}
-              className="mx-3 mb-3 shadow-lg"
+              className="mx-3 mb-3 shadow"
               style={{
                 background: `url(/img/series/books.jpg)`,
                 backgroundRepeat: 'no-repeat',

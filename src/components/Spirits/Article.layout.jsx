@@ -5,7 +5,7 @@ import React, { useRef } from 'react'
 import '../../assets/css/highlighting.css'
 import { PageState } from '../common/MainLayout'
 
-export default ({ data, pageContext, location }) => {
+const ArticleLayout = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
   const { frontmatter, tableOfContents, html: _html } = post
@@ -119,7 +119,7 @@ export default ({ data, pageContext, location }) => {
         <div ref={commentRef} className="comment" />
       </main>
 
-      <aside className="sticky-top float-md-right" id="blog-aside">
+      <aside className="sticky-top float-md-end" id="blog-aside">
         <section>
           <div className="divider">
             <span />
@@ -216,3 +216,5 @@ export default ({ data, pageContext, location }) => {
   //   </MainLayout>
   // )
 }
+
+export default ArticleLayout

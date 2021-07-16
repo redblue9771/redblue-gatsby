@@ -36,4 +36,6 @@ export const pageQuery = graphql`
   }
 `
 
-export default (props) => <Spirits layout="series" {...props} />
+const SeriesIndex = (props) => <Spirits layout="series" {...props} />
+
+export default SeriesIndex

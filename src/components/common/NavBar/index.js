@@ -7,7 +7,7 @@ import routes from '../../../utils/routes'
 import './index.css'
 import { navigate } from '@reach/router'
 
-export default ({ title = 'RedBlue | 赤琦', styleName = '' }) => {
+const MainNavBar = ({ title = 'RedBlue | 赤琦', styleName = '' }) => {
   const [toggleBar, setToggleBar] = React.useState(false)
   const handleToggle = () => {
     setToggleBar(!toggleBar)
@@ -65,10 +65,12 @@ export default ({ title = 'RedBlue | 赤琦', styleName = '' }) => {
           <span className="bar" />
         </Navbar.Toggle>
 
-        <Navbar.Collapse className="overlay">
+        <Navbar.Collapse className="overlay justify-content-end">
           <Nav className="nav-justified ml-auto">{renderRouter}</Nav>
         </Navbar.Collapse>
       </Navbar>
     </Container>
   )
 }
+
+export default MainNavBar

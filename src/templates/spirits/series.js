@@ -3,7 +3,7 @@ import React from 'react'
 import Spirits from '../../components/Spirits'
 
 export const pageQuery = graphql`
-  query($currItem: String!, $skip: Int!, $limit: Int!) {
+  query ($currItem: String!, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       filter: {
         fields: { draft: { ne: true } }
@@ -41,6 +41,8 @@ export const pageQuery = graphql`
   }
 `
 
-export default (props) => (
+const Series = (props) => (
   <Spirits layout="category" baseURL="/spirits/series/" {...props} />
 )
+
+export default Series

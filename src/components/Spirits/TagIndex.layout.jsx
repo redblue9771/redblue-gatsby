@@ -7,7 +7,7 @@ const fontColors = ['#29b7dc', '#6a9bd3', '#3a4f92', '#a7e2f1', '#9dbde2']
 const randomFz = () => Math.floor(Math.random() * 16 + 16)
 const randomC = () => Math.floor(Math.random() * 5)
 
-export default ({ location, pageContext }) => {
+const TagIndex = ({ location, pageContext }) => {
   const { setCurrPageState } = React.useContext(PageState)
 
   React.useEffect(() => {
@@ -49,3 +49,4 @@ export default ({ location, pageContext }) => {
     </React.Fragment>
   )
 }
+export default TagIndex

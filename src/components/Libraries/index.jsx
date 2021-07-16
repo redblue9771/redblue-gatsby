@@ -2,7 +2,7 @@ import React from 'react'
 import { PageState } from '../common/MainLayout'
 import libraries from '../../data/libraries.json'
 
-export default ({ data }) => {
+const Libraries = ({ data }) => {
   const { setCurrPageState } = React.useContext(PageState)
 
   React.useEffect(() => {
@@ -22,7 +22,7 @@ export default ({ data }) => {
           <ul>
             {Object.values(libraries[libTitle]).map(
               ({ name, author, path, description, keywords }) => (
-                <li id={name} className="clearfix mb-3" key={name}>
+                <li id={name} className="mb-3 " key={name}>
                   <div>
                     {name} - {author}
                   </div>
@@ -33,8 +33,9 @@ export default ({ data }) => {
                   <div className="text-muted tags mb-3">
                     关键词：{keywords.join('、')}
                   </div>
+
                   <a
-                    className="btn btn-outline-primary float-right btn-sm"
+                    className="d-block btn btn-outline-primary btn-sm text-nowrap"
                     href={`/libraries/${path}`}
                     target="_blank"
                     rel="contents noopener noreferrer"
@@ -51,3 +52,5 @@ export default ({ data }) => {
     </section>
   )
 }
+
+export default Libraries

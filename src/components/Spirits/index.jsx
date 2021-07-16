@@ -4,7 +4,7 @@ import TagIndexLayout from './TagIndex.layout'
 import SeriesIndexLayout from './SeriesIndex.layout'
 import CategoryIndexLayout from './CategoryIndex.layout'
 
-export default ({ layout, ...props }) => {
+const IndexLayout = ({ layout, ...props }) => {
   switch (layout) {
     case 'category':
       return <CategoryIndexLayout {...props} />
@@ -16,3 +16,4 @@ export default ({ layout, ...props }) => {
       return <ArticleLayout {...props} />
   }
 }
+export default IndexLayout

@@ -22,5 +22,6 @@ export const pageQuery = graphql`
     }
   }
 `
+const Article = (props) => <Spirits {...props} />
 
-export default (props) => <Spirits {...props} />
+export default Article
